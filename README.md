@@ -42,7 +42,7 @@ Next: <the immediate action or approval point>
 | Route | Use it when | What happens |
 |---|---|---|
 | Quick change | The behavior is clear, local, and safe for one agent to finish. | The agent makes the focused change, runs the smallest useful check, and reports the result. |
-| Plan first | Requirements remain unsettled or the work changes a durable contract, shared interface, authorization rule, schema, migration, or another repository. | The agent clarifies the contract. It uses OpenSpec only when installed and useful. |
+| Plan first | Requirements remain unsettled or the work changes a durable contract, shared interface, authorization rule, schema, migration, or another repository. | The agent researches unknown facts or prototypes a question that needs executable evidence, then clarifies the contract. It uses OpenSpec only when installed and useful. |
 | Orchestrated delivery | The work needs several PRs, workspace decisions, coordinated review, or continued execution after approval. | `orchestrate` proposes the complete delivery contract and waits for one approval. |
 | Standing program | The work spans sessions or coordinated tracks and needs recovery state. | `orchestrate` hands the approved delivery to `orchestrate-program`. |
 
@@ -67,13 +67,15 @@ Next: Settle and approve the behavior contract, then propose orchestrated delive
 The cycle then works like this:
 
 1. The agent inspects repository rules, existing behavior, active work, and acceptance criteria.
-2. If the repository uses OpenSpec and it will help, `openspec-explore` settles open decisions and `openspec-propose` writes the contract. Without OpenSpec, the agent uses `grill-me` or a concise plan. Work never stops because OpenSpec is absent. If an approved contract already exists, skip this step.
-3. The developer reviews and approves the behavior contract.
-4. `orchestrate` proposes the PR boundaries, branch or worktree choice, checks, merge authority, concurrency, and intervention points.
-5. The developer approves that delivery proposal once.
-6. The agent implements the pilot, verifies it, gets an independent exact-head review, fixes valid findings, and merges when the approved authority and checks allow it.
-7. The agent continues through the remaining PRs without routine approval prompts. It stops only for a product decision, missing authority, unsafe state, a required manual action, or an external blocker.
-8. The agent verifies the integrated result. If OpenSpec governed the work, it syncs and archives the completed change according to repository policy.
+2. The agent separates facts from decisions. For example, if the Customer Portal API's supported authorization scopes are unclear, `research` checks the official API contract and returns the finding, sources, and implication. It reports in chat unless durable evidence is warranted.
+3. If reading cannot settle whether a state model or UI direction works, `prototype` builds the smallest disposable demo that can answer that question. Its verdict returns to planning, while the throwaway code stays out of production.
+4. If the repository uses OpenSpec and it will help, `openspec-explore` uses that evidence to settle open decisions and `openspec-propose` writes the contract. Without OpenSpec, the agent uses `grill-me` or a concise plan. Work never stops because OpenSpec is absent. If an approved contract already exists, skip this step.
+5. The developer reviews and approves the behavior contract.
+6. `orchestrate` proposes the PR boundaries, branch or worktree choice, checks, merge authority, concurrency, and intervention points.
+7. The developer approves that delivery proposal once.
+8. The agent implements the pilot, verifies it, uses `code-review` for an independent exact-head verdict, fixes valid findings, and merges when the approved authority and checks allow it.
+9. The agent continues through the remaining PRs without routine approval prompts. It stops only for a product decision, missing authority, unsafe state, a required manual action, or an external blocker.
+10. The agent verifies the integrated result. If OpenSpec governed the work, it syncs and archives the completed change according to repository policy.
 
 ### Quick-change example
 
@@ -155,6 +157,9 @@ For Cursor only, replace the agent list with `--agent cursor`. In a new reposito
 | Skill | Use it when |
 |---|---|
 | [`route-work`](skills/route-work/SKILL.md) | A new software change request needs the lightest safe route. It explains the choice briefly, keeps small work direct, and selects planning or orchestration only when warranted. |
+| [`research`](skills/research/SKILL.md) | A plan depends on an unknown fact that primary sources can settle. It returns evidence to OpenSpec or another planning flow without taking over the decision. |
+| [`prototype`](skills/prototype/SKILL.md) | Reading cannot settle a logic, state, or UI question. It builds disposable evidence and returns the verdict to planning without treating the prototype as production code. |
+| [`code-review`](skills/code-review/SKILL.md) | A branch or PR needs an independent verdict against repository standards and the governing behavior contract at a committed head. |
 | [`orchestrate`](skills/orchestrate/SKILL.md) | A complex change needs a delivery proposal, bounded ownership, coordinated PRs, or continued execution after approval. Skip it for a small local edit. |
 | [`orchestrate-program`](skills/orchestrate-program/SKILL.md) | An approved program will span sessions, several coordinated PRs, or enough parallel work to require durable state and recovery. The parent orchestrator normally selects it. |
 | [`plan-pr-delivery`](skills/plan-pr-delivery/SKILL.md) | A change needs clear PR boundaries, branch and worktree choices, dependency order, or a landing plan. |
@@ -174,7 +179,7 @@ python3 scripts/validate.py
 
 ## Third-party work
 
-`unslop` comes from Lauren Tan's pstack. `grill-me` adapts Matt Pocock's `grill-me` and `grilling` skills into one self-contained skill. Both projects use the MIT License. Exact source commits, modifications, copyright notices, and license text are recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+`unslop` comes from Lauren Tan's pstack. `grill-me`, `research`, `prototype`, and `code-review` adapt Matt Pocock's skills for the DST flow. Both projects use the MIT License. Exact source commits, modifications, copyright notices, and license text are recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## License
 

@@ -89,6 +89,16 @@ def main() -> int:
         errors.append("THIRD_PARTY_NOTICES.md is missing the pinned pstack source")
     if "5b15a47f2d7150f545fbcacbfe381787fc0230dc" not in notices:
         errors.append("THIRD_PARTY_NOTICES.md is missing the pinned Matt Pocock source")
+    if "skills/engineering/research/SKILL.md" not in notices:
+        errors.append("THIRD_PARTY_NOTICES.md is missing the Matt Pocock research source")
+    if "skills/engineering/prototype/SKILL.md" not in notices:
+        errors.append("THIRD_PARTY_NOTICES.md is missing the Matt Pocock prototype source")
+    if "skills/engineering/prototype/LOGIC.md" not in notices:
+        errors.append("THIRD_PARTY_NOTICES.md is missing the Matt Pocock prototype logic source")
+    if "skills/engineering/prototype/UI.md" not in notices:
+        errors.append("THIRD_PARTY_NOTICES.md is missing the Matt Pocock prototype UI source")
+    if "skills/engineering/code-review/SKILL.md" not in notices:
+        errors.append("THIRD_PARTY_NOTICES.md is missing the Matt Pocock code-review source")
 
     markdown_files = sorted(ROOT.glob("*.md"))
     if SKILLS_DIR.exists():

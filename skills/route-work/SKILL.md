@@ -27,16 +27,22 @@ Choose this when requirements are unclear, behavior needs a durable contract, or
 
 If the request already includes an approved contract, do not reopen planning. Implement one bounded change directly or pass multi-PR delivery to `orchestrate`.
 
+Separate discoverable facts from developer decisions. Use `research` when an unknown technical, legal, API, or product fact could change the contract. Return its evidence to planning. Do not research preferences or facts that the repository can answer directly.
+
+Use `prototype` when reading cannot settle a logic, state, or UI question and a disposable executable answer is cheaper than choosing a production design. Return its verdict to planning. A prototype is evidence, not implementation.
+
 OpenSpec is optional. Use it only when the repository already uses it, the developer requests it, or a durable specification will materially improve the work. If OpenSpec is unavailable, use `grill-me`, the repository's existing planning method, or a concise in-chat plan. Never block delivery because OpenSpec is not installed.
 
 When OpenSpec is warranted:
 
-1. Use `openspec-explore` while important behavior remains unsettled.
-2. Use `openspec-propose` to create the change contract.
-3. Stop for developer approval of that contract.
-4. After approval, implement a bounded change directly or pass a multi-PR change to `orchestrate`.
-5. Use `openspec-update-change` only when an accepted decision changes.
-6. Sync and archive the change according to repository policy after implementation and proof are complete.
+1. Use `research` for unknown facts that could change the contract. It reports evidence but does not edit OpenSpec artifacts.
+2. Use `prototype` only when the remaining question needs executable or visual evidence. It returns a verdict but does not become production code.
+3. Use `openspec-explore` while important behavior remains unsettled.
+4. Use `openspec-propose` to create the change contract.
+5. Stop for developer approval of that contract.
+6. After approval, implement a bounded change directly or pass a multi-PR change to `orchestrate`.
+7. Use `openspec-update-change` only when an accepted decision changes.
+8. Sync and archive the change according to repository policy after implementation and proof are complete.
 
 ### Orchestrated delivery
 

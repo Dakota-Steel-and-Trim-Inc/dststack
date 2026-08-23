@@ -80,6 +80,8 @@ The orchestrator judges results against the contract, repository evidence, and t
 
 Review every PR before landing with a fresh-context agent that did not implement its scope. Record the repository, PR, head SHA, reviewer, checks, runtime evidence, verdict, and residual risk. A new head invalidates the prior verdict. CI is evidence, not the verdict.
 
+`code-review` is required for every committed head submitted for landing, including a head created by review fixes. The orchestrator invokes it once as coordinator. The standards and behavior reviewers it delegates must not invoke `code-review` again. Every reviewer must remain independent of the implementation. If the skill is unavailable, stop before landing and ask the developer to install it or approve a different review contract.
+
 Fix valid findings, verify the affected behavior on the new head, and stop when no actionable findings remain. Use `challenge` when review exposes a blocking defect, repeated violations of one invariant, several fresh defects after completion, or a fix that expands scope. Do not add review rounds after actionable findings are resolved.
 
 Land each cohesive PR as soon as it is independently verified and the approved authority includes merging. Do not advance dependent work until every prerequisite PR passes exact-head review and merges. Park discoveries that do not block the current contract as follow-up work instead of expanding the active PR.
