@@ -159,7 +159,7 @@ For Cursor only, replace the agent list with `--agent cursor`. In a new reposito
 | [`route-work`](skills/route-work/SKILL.md) | A new software change request needs the lightest safe route. It explains the choice briefly, keeps small work direct, and selects planning or orchestration only when warranted. |
 | [`research`](skills/research/SKILL.md) | A plan depends on an unknown fact that primary sources can settle. It returns evidence to OpenSpec or another planning flow without taking over the decision. |
 | [`prototype`](skills/prototype/SKILL.md) | Reading cannot settle a logic, state, or UI question. It builds disposable evidence and returns the verdict to planning without treating the prototype as production code. |
-| [`code-review`](skills/code-review/SKILL.md) | A branch, PR, or working diff needs an independent verdict against repository standards and the governing behavior contract. |
+| [`code-review`](skills/code-review/SKILL.md) | A branch or PR needs an independent verdict against repository standards and the governing behavior contract at a committed head. |
 | [`orchestrate`](skills/orchestrate/SKILL.md) | A complex change needs a delivery proposal, bounded ownership, coordinated PRs, or continued execution after approval. Skip it for a small local edit. |
 | [`orchestrate-program`](skills/orchestrate-program/SKILL.md) | An approved program will span sessions, several coordinated PRs, or enough parallel work to require durable state and recovery. The parent orchestrator normally selects it. |
 | [`plan-pr-delivery`](skills/plan-pr-delivery/SKILL.md) | A change needs clear PR boundaries, branch and worktree choices, dependency order, or a landing plan. |

@@ -32,6 +32,6 @@ OpenSpec target: <proposal | design | spec | tasks | none>
 
 Separate verified facts, inferences, and recommendations. Say what remains unknown when primary sources conflict or do not settle the question.
 
-Write a Markdown note only when the developer asks, the accepted plan requires durable evidence, or the repository already keeps this kind of research. Follow the repository's location and naming convention. Do not create an OpenSpec artifact through this skill.
+Write a Markdown note only when the developer asks or the accepted plan explicitly includes that artifact. Repository convention determines its location, not whether the write is authorized. Do not create an OpenSpec artifact through this skill.
 
-Research does not authorize implementation or external writes.
+Research does not authorize repository edits, implementation, or external writes.

@@ -80,7 +80,7 @@ The orchestrator judges results against the contract, repository evidence, and t
 
 Review every PR before landing with a fresh-context agent that did not implement its scope. Record the repository, PR, head SHA, reviewer, checks, runtime evidence, verdict, and residual risk. A new head invalidates the prior verdict. CI is evidence, not the verdict.
 
-When `code-review` is installed, every independent PR reviewer must use it to keep repository-standards and governing-contract checks separate. Its reviewers must still be independent of the implementation.
+When `code-review` is installed, the orchestrator must invoke it once per PR as the independent review coordinator. The standards and behavior reviewers it delegates must not invoke `code-review` again. Every reviewer must remain independent of the implementation.
 
 Fix valid findings, verify the affected behavior on the new head, and stop when no actionable findings remain. Use `challenge` when review exposes a blocking defect, repeated violations of one invariant, several fresh defects after completion, or a fix that expands scope. Do not add review rounds after actionable findings are resolved.
 

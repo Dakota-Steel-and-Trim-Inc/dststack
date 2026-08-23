@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: Review a branch, pull request, or working diff against repository standards and the governing request or specification. Use for an independent exact-head verdict before merge or when the user asks to review changes. Do not use it to authorize fixes or landing.
+description: Review a branch or pull request against repository standards and the governing request or specification. Use for an independent exact-head verdict before merge or when the user asks to review committed changes. Do not use it to authorize fixes or landing.
 ---
 
 # Code review
@@ -9,13 +9,13 @@ Review the same diff along two separate axes: repository standards and requested
 
 ## Pin the scope
 
-Resolve the repository, base, head, merge base, and diff before reviewing. For a pull request, record its number and exact head SHA. A new head invalidates the verdict.
+Resolve the repository, base, committed head, merge base, and diff before reviewing. For a pull request, record its number and exact head SHA. Require a clean working tree so uncommitted changes cannot escape the pinned verdict. A new head invalidates the verdict.
 
 Read the nearest repository instructions and relevant standards. Identify the governing behavior from the developer's request, an approved OpenSpec change or other specification, linked issue, acceptance criteria, and PR description. State when no behavior contract is available instead of inventing one.
 
 ## Review independently
 
-When delegation is available, use two fresh-context reviewers that did not implement the scope. Run them in parallel only when the environment and task allow it.
+The caller is the review coordinator. When delegation is available, it uses two fresh-context reviewers that did not implement the scope. Run them in parallel only when the environment and task allow it. Axis reviewers must not invoke `code-review` or delegate another review.
 
 The standards reviewer checks:
 
