@@ -93,6 +93,8 @@ def main() -> int:
         errors.append("THIRD_PARTY_NOTICES.md is missing the Matt Pocock research source")
     if "skills/engineering/prototype/SKILL.md" not in notices:
         errors.append("THIRD_PARTY_NOTICES.md is missing the Matt Pocock prototype source")
+    if "skills/engineering/code-review/SKILL.md" not in notices:
+        errors.append("THIRD_PARTY_NOTICES.md is missing the Matt Pocock code-review source")
 
     markdown_files = sorted(ROOT.glob("*.md"))
     if SKILLS_DIR.exists():

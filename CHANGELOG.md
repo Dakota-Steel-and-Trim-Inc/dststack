@@ -4,6 +4,7 @@
 
 - Added Matt Pocock's adapted `research` skill to feed primary-source evidence into planning and optional OpenSpec exploration.
 - Added Matt Pocock's adapted `prototype` skill for disposable logic, state, and UI experiments before committing to a production design.
+- Added Matt Pocock's adapted `code-review` skill for separate repository-standards and governing-contract review at an exact head.
 - Added `route-work` to choose the lightest delivery path before implementation.
 - Documented the complete DST Stack flow with quick-change and full-flow examples.
 - Added OpenSpec as an optional official companion without copying its skills.
