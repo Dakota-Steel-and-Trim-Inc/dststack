@@ -7,7 +7,7 @@ description: Investigate a software question against high-trust primary sources 
 
 Resolve the fact that blocks a sound decision. Do not turn research into a second planning process.
 
-When the question needs meaningful reading and delegation is available, give it to a background agent so the main flow can continue. Handle a small lookup directly.
+The caller is the research coordinator. When the question needs meaningful reading and delegation is available, it may assign one background researcher so the main flow can continue. That researcher executes the assignment directly and must not delegate again. Handle a small lookup directly.
 
 ## Investigate
 

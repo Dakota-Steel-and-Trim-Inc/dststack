@@ -15,7 +15,7 @@ Read the nearest repository instructions and relevant standards. Identify the go
 
 ## Review independently
 
-The caller is the review coordinator. When delegation is available, it uses two fresh-context reviewers that did not implement the scope. Run them in parallel only when the environment and task allow it. Axis reviewers must not invoke `code-review` or delegate another review.
+The caller is the review coordinator. When delegation is available, it uses two fresh-context reviewers that did not implement the scope. Run them in parallel only when the environment and task allow it. Give each reviewer the repository, base and head SHAs, merge base, diff command, applicable standards, governing contract, and its assigned axis. Axis reviewers must not invoke `code-review` or delegate another review.
 
 The standards reviewer checks:
 
@@ -36,6 +36,8 @@ Skip formatting or mechanical issues already enforced by tooling. Do not report 
 ## Verify and report
 
 The main reviewer confirms each finding against the exact diff and surrounding implementation. Keep the two axes separate so one cannot hide failure in the other.
+
+After delegated reviewers return, resolve the current PR head again. Discard the verdict if it differs from the reviewed SHA. Before landing, compare the recorded reviewed SHA with the current PR head once more.
 
 Report findings first, ordered by severity within each axis. Include the file and tight line range, the violated rule or requirement, the failure it causes, and the smallest useful correction. If there are no actionable findings, say so and name any verification limit or residual risk.
 

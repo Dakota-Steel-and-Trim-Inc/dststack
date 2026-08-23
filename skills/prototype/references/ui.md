@@ -4,7 +4,7 @@ Use several structurally different variants when the question is what a page or 
 
 ## Place the variants
 
-Prefer an existing route so each option uses the real shell, data density, parameters, and read-only data. Switch variants with a shareable `?variant=` search parameter. Create a clearly named prototype route only when no existing page can host the work.
+Prefer an existing route so each option uses the real shell, data density, parameters, and read-only data. Before touching it, inspect repository state and require exclusive task ownership of the affected paths. Preserve dirty or user-owned work. Use an authorized isolated branch or worktree when scopes overlap. Switch variants with a shareable `?variant=` search parameter. Create a clearly named prototype route only when no existing page can host the work.
 
 ## Build the comparison
 
@@ -12,7 +12,7 @@ Prefer an existing route so each option uses the real shell, data density, param
 2. Make the variants disagree about layout, information hierarchy, or the primary action. Color and copy changes do not count as separate directions.
 3. Use the project's component library and styling system, but avoid a shared layout that makes every variant the same.
 4. Add one small floating switcher that changes the URL parameter and shows the active variant. Arrow-key navigation is useful when it does not intercept typing.
-5. Keep mutations stubbed or pointed at disposable data. The prototype evaluates the UI, not the backend.
+5. Keep mutations stubbed or in memory. Use a named non-production database, API, or other external target only when the developer or approved contract explicitly authorizes it. The prototype evaluates the UI, not the backend.
 
 ## Judge the result
 
