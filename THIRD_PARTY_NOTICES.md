@@ -44,7 +44,7 @@ Local modifications:
 
 - The `grilling` alias and its interview process are combined into one self-contained `grill-me` skill. The wording was adapted for agents that do not expose a separate Skill tool.
 - `research` reports in chat by default, writes durable notes only when warranted, and returns evidence to optional OpenSpec exploration without editing OpenSpec artifacts.
-- `prototype` keeps Matt Pocock's logic and UI branches but moves their detail into `references/`, shortens the instructions, and requires explicit authority before commits, pushes, issue updates, merges, or cleanup.
+- `prototype` keeps Matt Pocock's logic and UI branches but moves their detail into `references/`, shortens the instructions, allows native-runtime logic demos, and requires explicit authority before commits, pushes, issue updates, merges, or cleanup.
 - `code-review` keeps the separate standards and behavior axes, removes the dependency on Matt Pocock's issue-tracker setup, and adds exact-head and authority boundaries for DST delivery.
 
 MIT License

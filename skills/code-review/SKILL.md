@@ -9,7 +9,7 @@ Review the same diff along two separate axes: repository standards and requested
 
 ## Pin the scope
 
-Resolve the repository, base, committed head, merge base, and diff before reviewing. For a pull request, record its number and exact head SHA. Require a clean working tree so uncommitted changes cannot escape the pinned verdict. A new head invalidates the verdict.
+Resolve the repository, base, committed head, merge base, and diff before reviewing. For a pull request, record its number and exact head SHA. Review commit objects, not the mutable worktree. Report any worktree changes as outside the verdict and leave them untouched. A new head invalidates the verdict.
 
 Read the nearest repository instructions and relevant standards. Identify the governing behavior from the developer's request, an approved OpenSpec change or other specification, linked issue, acceptance criteria, and PR description. State when no behavior contract is available instead of inventing one.
 
