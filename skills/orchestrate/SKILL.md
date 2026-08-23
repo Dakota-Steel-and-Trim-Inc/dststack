@@ -9,7 +9,7 @@ The main agent owns the proposal, approval gate, integration, and proof. Special
 
 ## Propose
 
-This turn is read-only. Inspect the request or accepted plan, repository instructions, current state, active work, and acceptance criteria. Name the governing contract and surface conflicts instead of choosing silently.
+This turn is read-only. Inspect the request or accepted plan, repository instructions, current state, active work, and acceptance criteria. Name the governing contract and surface conflicts instead of choosing silently. An approved OpenSpec change may be the contract. OpenSpec is optional and must never block orchestration when the request or another accepted plan is sufficient.
 
 Classify the work:
 
@@ -19,6 +19,8 @@ Classify the work:
 - `Standing program` when delivery will span sessions, needs restart recovery, or has several coordinated tracks. Use `orchestrate-program` after approval.
 
 Use `challenge` before proposing the roster when the work crosses repositories or production boundaries, combines at least three independent behavioral concerns, lacks clear invariants, or competes with too much active work. Use `plan-pr-delivery` for version-controlled implementation or an implementation plan.
+
+When the contract is an approved OpenSpec change, use its requirements and tasks as the behavior boundary. Do not create a second product plan. Use `plan-pr-delivery` only to define delivery boundaries, workspace choices, review order, and landing.
 
 Reply in this shape:
 
@@ -87,3 +89,5 @@ Land each cohesive PR as soon as it is independently verified and the approved a
 Inspect the integrated result and run fresh checks that match the risk. Account for every acceptance criterion, assignment, review finding, permission boundary, and unresolved risk. An agent's success report is not proof.
 
 Report the result, changed scope, verification evidence, unresolved risks, and required developer action. Remove temporary ledger state after verified completion unless a durable handoff is required. Clean up only approved, task-created branches and worktrees with no user-owned or unmerged work.
+
+When an installed OpenSpec workflow governs the change, keep its artifacts coherent with accepted decisions. Sync and archive only when repository policy allows it, implementation and proof are complete, and no required task remains unchecked.

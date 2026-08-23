@@ -25,6 +25,72 @@ This toolbox will grow, but slowly. A skill belongs here after real project work
 - Preserve production data, credentials, unrelated changes, and user-owned branches.
 - Keep shared project repositories clean. DST Stack is installed globally, not copied into each project.
 
+## The DST flow
+
+`route-work` is the front door for software change requests. It inspects the request and repository, then chooses the lightest path that can finish the work safely.
+
+Agents decide when to load a skill, so automatic routing is best-effort across tools. When you want to guarantee the gate runs, start the request with `$route-work`.
+
+Every route begins with a short decision:
+
+```text
+Route: <Quick change | Plan first | Orchestrated delivery | Standing program>
+Why: <the fact that determined the route>
+Next: <the immediate action or approval point>
+```
+
+| Route | Use it when | What happens |
+|---|---|---|
+| Quick change | The behavior is clear, local, and safe for one agent to finish. | The agent makes the focused change, runs the smallest useful check, and reports the result. |
+| Plan first | Requirements remain unsettled or the work changes a durable contract, shared interface, authorization rule, schema, migration, or another repository. | The agent clarifies the contract. It uses OpenSpec only when installed and useful. |
+| Orchestrated delivery | The work needs several PRs, workspace decisions, coordinated review, or continued execution after approval. | `orchestrate` proposes the complete delivery contract and waits for one approval. |
+| Standing program | The work spans sessions or coordinated tracks and needs recovery state. | `orchestrate` hands the approved delivery to `orchestrate-program`. |
+
+The full flow earns its cost when a mistake could change permissions, corrupt persistent data, break a shared contract, affect several repositories, or hide inside an oversized PR. Skip it for copy changes, one local bug with a clear cause, a focused test adjustment, or another change one agent can finish and verify directly.
+
+### Full-flow example
+
+A developer starts with the work, not a ceremony:
+
+```text
+Add an Unlock Orders page under Settings. Admin and management users need role-based site access. The page will call the Customer Portal API and change how logistics database keys are resolved. Take the approved work through reviewed PRs and merge when the required checks pass.
+```
+
+`route-work` should answer briefly:
+
+```text
+Route: Plan first
+Why: This changes authorization, an API contract, and database selection across reviewable concerns.
+Next: Settle and approve the behavior contract, then propose orchestrated delivery.
+```
+
+The cycle then works like this:
+
+1. The agent inspects repository rules, existing behavior, active work, and acceptance criteria.
+2. If the repository uses OpenSpec and it will help, `openspec-explore` settles open decisions and `openspec-propose` writes the contract. Without OpenSpec, the agent uses `grill-me` or a concise plan. Work never stops because OpenSpec is absent. If an approved contract already exists, skip this step.
+3. The developer reviews and approves the behavior contract.
+4. `orchestrate` proposes the PR boundaries, branch or worktree choice, checks, merge authority, concurrency, and intervention points.
+5. The developer approves that delivery proposal once.
+6. The agent implements the pilot, verifies it, gets an independent exact-head review, fixes valid findings, and merges when the approved authority and checks allow it.
+7. The agent continues through the remaining PRs without routine approval prompts. It stops only for a product decision, missing authority, unsafe state, a required manual action, or an external blocker.
+8. The agent verifies the integrated result. If OpenSpec governed the work, it syncs and archives the completed change according to repository policy.
+
+### Quick-change example
+
+```text
+Change the Unlock Orders card label from "Order Unlock" to "Unlock Orders" and update its existing test.
+```
+
+`route-work` should keep this light:
+
+```text
+Route: Quick change
+Why: This is one local copy change with a clear expected result and an existing test.
+Next: Update the label, run the focused test, and report the result.
+```
+
+The agent continues immediately. It does not create an OpenSpec change, orchestration proposal, worktree, or PR series.
+
 ## Install globally
 
 You need Node.js 22.20 or newer and GitHub access to this private repository.
@@ -61,26 +127,40 @@ To update DST Stack, rerun the installation command you used. The installer refr
 
 The installer supports Cursor, Codex, Claude Code, OpenCode, and many other agents through the same Agent Skills format.
 
+### Optional OpenSpec companion
+
+DST Stack does not require OpenSpec. Install it only if you want durable change proposals and specifications in repositories that benefit from them.
+
+The standard `npx skills` installer cannot ask a repository-specific follow-up question, so OpenSpec remains a separate opt-in step. Install the official [OpenSpec](https://github.com/Fission-AI/OpenSpec) CLI:
+
+```bash
+npm install -g @fission-ai/openspec@latest
+```
+
+Then install only OpenSpec's six core skills. Do not use `--skill '*'`, which also installs skills meant for OpenSpec's own maintainers.
+
+```bash
+npx skills add Fission-AI/OpenSpec \
+  --global \
+  --agent codex claude-code opencode cursor \
+  --skill openspec-explore openspec-propose openspec-apply-change \
+          openspec-update-change openspec-sync-specs openspec-archive-change \
+  --yes
+```
+
+For Cursor only, replace the agent list with `--agent cursor`. In a new repository, `openspec init --tools none` creates the `openspec/` planning structure without copying agent skills into the project. Do not reinitialize a repository that already has an OpenSpec setup.
+
 ## Skills
 
 | Skill | Use it when |
 |---|---|
+| [`route-work`](skills/route-work/SKILL.md) | A new software change request needs the lightest safe route. It explains the choice briefly, keeps small work direct, and selects planning or orchestration only when warranted. |
 | [`orchestrate`](skills/orchestrate/SKILL.md) | A complex change needs a delivery proposal, bounded ownership, coordinated PRs, or continued execution after approval. Skip it for a small local edit. |
 | [`orchestrate-program`](skills/orchestrate-program/SKILL.md) | An approved program will span sessions, several coordinated PRs, or enough parallel work to require durable state and recovery. The parent orchestrator normally selects it. |
 | [`plan-pr-delivery`](skills/plan-pr-delivery/SKILL.md) | A change needs clear PR boundaries, branch and worktree choices, dependency order, or a landing plan. |
 | [`challenge`](skills/challenge/SKILL.md) | Scope, concurrency, review findings, or missing proof suggest that continuing would be hard to review or unsafe. |
 | [`unslop`](skills/unslop/SKILL.md) | Any prose needs to sound like a person wrote it. This includes plans, README files, PR descriptions, and user-facing copy. |
 | [`grill-me`](skills/grill-me/SKILL.md) | A plan or design feels plausible but still has unresolved decisions. Invoke it explicitly and work through the questions before implementation. |
-
-## How orchestration works
-
-1. `orchestrate` inspects the request and current repository without making changes.
-2. It proposes the contract, run mode, PR plan, workspace, authority, concurrency limit, checks, and intervention points.
-3. The developer approves that complete delivery plan once.
-4. The agent implements, reviews, fixes, verifies, and merges every authorized PR without asking for approval between them.
-5. The agent stops only when the approved contract is complete or a genuine product, authority, safety, manual, or external blocker requires intervention.
-
-Ordinary work stays light. Program machinery appears only when a task cannot fit comfortably in one run and needs durable state, a pilot, or restart recovery.
 
 ## Adding a skill
 
