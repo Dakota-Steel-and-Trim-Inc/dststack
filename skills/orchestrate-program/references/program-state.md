@@ -48,7 +48,7 @@ Record discoveries outside the active contract. Include evidence, impact, and th
 
 ## Drain checkpoint
 
-At each phase change, merge-frontier change, recovery, and developer report:
+At each phase change, prerequisite PR merge or head change, recovery, and developer report:
 
 1. Reconcile completed or stalled units.
 2. Update exact PR heads.

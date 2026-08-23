@@ -29,11 +29,11 @@ Use pilot evidence to correct the remaining scope, PR size, briefs, and verifica
 
 ## Run a rolling queue
 
-- Default to no more than three active implementation lanes. Lower the limit for overlapping files, schema, persistent data, product decisions, or a shared merge frontier.
+- Default to no more than three active implementation lanes. Lower the limit for overlapping files, schema, persistent data, product decisions, or work that depends on the same unmerged PR.
 - Keep one writer per scope, branch, and worktree.
 - Prefer fewer, broader workers when splitting would create coordination work without independent value.
 - Refill capacity only after a unit reaches a terminal state or frees its lane.
-- Treat completions as queued updates during a critical action. Process them together at the next safe drain point.
+- Queue completion reports while writing a brief, changing a branch base, merging, or updating program state. Process them together after that action ends.
 - Include the approved contract, paths allowed and forbidden, acceptance criteria, exact checks, time limit, branch, worktree, dependencies, and report shape in every brief.
 - Do not resume an agent with stale instructions. Send a consolidated current brief.
 
@@ -48,11 +48,11 @@ Record each verdict by repository, PR, and head SHA. Include reviewer, verificat
 - A failed verdict produces a bounded fix assignment. It does not produce an automatic review loop.
 - Stop reviewing when the final head has no actionable findings.
 
-Land each cohesive PR as soon as it is verified and the approved authority includes merging. Keep the lowest dependency frontier healthy before advancing dependent work. Do not hold completed work until the end of the program.
+Land each cohesive PR as soon as it is verified and the approved authority includes merging. Do not advance dependent work until its prerequisite PR passes exact-head review and merges. Do not hold completed work until the end of the program.
 
 ## Control scope and developer gates
 
-Fix discoveries that block the approved completion condition or current merge frontier. Put other discoveries in `follow-ups.md` with evidence and return to the approved work.
+Fix discoveries that block the approved completion condition or the next prerequisite PR from passing review and merging. Put other discoveries in `follow-ups.md` with evidence and return to the approved work.
 
 Write genuine product decisions, authority gaps, unsafe state, manual steps, and external blockers to `gates.md`. Batch them for the developer and continue unrelated approved work when safe. Never ask whether to keep going while an approved next action remains.
 

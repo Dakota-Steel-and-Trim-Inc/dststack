@@ -25,7 +25,7 @@ Classify delivery as `No PR`, `Single PR`, or `PR series`.
 
 For a novel or risky series, designate the first representative PR as a pilot. Take it through implementation, review, verification, and landing before broad delegation. Skip the pilot when the work is familiar, cheap, and uniform, and state why.
 
-Set a WIP limit. Default to no more than three active implementation lanes. Lower it when work shares files, schema, persistent data, product decisions, or a merge frontier.
+Set a WIP limit. Default to no more than three active implementation lanes. Lower it when work shares files, schema, persistent data, product decisions, or depends on the same unmerged PR.
 
 ## Choose the workspace
 

@@ -27,7 +27,7 @@ This toolbox will grow, but slowly. A skill belongs here after real project work
 
 ## Install globally
 
-You need Node.js 18 or newer and GitHub access to this private repository.
+You need Node.js 22.20 or newer and GitHub access to this private repository.
 
 Install DST Stack for Codex, Claude Code, OpenCode, and Cursor:
 
@@ -57,13 +57,7 @@ Reload the agent after the first installation. Confirm the global skills with:
 npx skills list --global
 ```
 
-Update the installed DST Stack skills with:
-
-```bash
-npx skills update challenge grill-me orchestrate orchestrate-program plan-pr-delivery unslop \
-  --global \
-  --yes
-```
+To update DST Stack, rerun the installation command you used. The installer refreshes every skill from this repository.
 
 The installer supports Cursor, Codex, Claude Code, OpenCode, and many other agents through the same Agent Skills format.
 
