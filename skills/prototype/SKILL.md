@@ -18,7 +18,7 @@ If the question is ambiguous, inspect the surrounding code. Ask the developer on
 
 - Put it in an isolated, task-created location near the relevant code and name it clearly as a prototype.
 - Make it trivial to run. Prefer one command or one self-contained file.
-- Keep state in memory unless persistence is the question being tested. Never use production data.
+- Keep state in memory by default. A persistence question may use local disposable storage. Any database, API, queue, or other external service requires explicit authority for the named non-production target. Never use production data.
 - Build only enough behavior and polish to answer the question. Do not add production abstractions, hardening, or a full test suite.
 - Expose the relevant state or variant so the developer can see what changed.
 

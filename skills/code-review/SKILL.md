@@ -9,13 +9,15 @@ Review the same diff along two separate axes: repository standards and requested
 
 ## Pin the scope
 
-Resolve the repository, base, committed head, merge base, and diff before reviewing. For a pull request, record its number and exact head SHA. Review commit objects, not the mutable worktree. Report any worktree changes as outside the verdict and leave them untouched. A new head invalidates the verdict.
+Resolve the repository, base, committed head, merge base, and diff before reviewing. For a pull request, record its number and exact head SHA. For a branch, record its full ref and exact head SHA. Review commit objects, not the mutable worktree. Report any worktree changes as outside the verdict and leave them untouched. A new head invalidates the verdict.
 
 Read the nearest repository instructions and relevant standards. Identify the governing behavior from the developer's request, an approved OpenSpec change or other specification, linked issue, acceptance criteria, and PR description. State when no behavior contract is available instead of inventing one.
 
 ## Review independently
 
 The caller is the review coordinator. When delegation is available, it uses two fresh-context reviewers that did not implement the scope. Run them in parallel only when the environment and task allow it. Give each reviewer the repository, base and head SHAs, merge base, diff command, applicable standards, governing contract, and its assigned axis. Axis reviewers must not invoke `code-review` or delegate another review.
+
+Without delegation, the coordinator may review both axes directly only when it did not implement any reviewed change. Otherwise obtain an independent reviewer or stop before landing.
 
 The standards reviewer checks:
 
@@ -37,7 +39,7 @@ Skip formatting or mechanical issues already enforced by tooling. Do not report 
 
 The main reviewer confirms each finding against the exact diff and surrounding implementation. Keep the two axes separate so one cannot hide failure in the other.
 
-After delegated reviewers return, resolve the current PR head again. Discard the verdict if it differs from the reviewed SHA. Before landing, compare the recorded reviewed SHA with the current PR head once more.
+After both axes finish, resolve the current PR head or branch ref again. Discard the verdict if it differs from the reviewed SHA. Before landing, compare the recorded reviewed SHA with that mutable ref once more.
 
 Report findings first, ordered by severity within each axis. Include the file and tight line range, the violated rule or requirement, the failure it causes, and the smallest useful correction. If there are no actionable findings, say so and name any verification limit or residual risk.
 
