@@ -28,14 +28,22 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## Matt Pocock `grill-me` and `grilling`
+## Matt Pocock `grill-me`, `grilling`, `research`, and `prototype`
 
 Sources:
 
 - `skills/productivity/grill-me/SKILL.md` at [`mattpocock/skills@5b15a47f2d7150f545fbcacbfe381787fc0230dc`](https://github.com/mattpocock/skills/blob/5b15a47f2d7150f545fbcacbfe381787fc0230dc/skills/productivity/grill-me/SKILL.md)
 - `skills/productivity/grilling/SKILL.md` at [`mattpocock/skills@5b15a47f2d7150f545fbcacbfe381787fc0230dc`](https://github.com/mattpocock/skills/blob/5b15a47f2d7150f545fbcacbfe381787fc0230dc/skills/productivity/grilling/SKILL.md)
+- `skills/engineering/research/SKILL.md` at [`mattpocock/skills@5b15a47f2d7150f545fbcacbfe381787fc0230dc`](https://github.com/mattpocock/skills/blob/5b15a47f2d7150f545fbcacbfe381787fc0230dc/skills/engineering/research/SKILL.md)
+- `skills/engineering/prototype/SKILL.md` at [`mattpocock/skills@5b15a47f2d7150f545fbcacbfe381787fc0230dc`](https://github.com/mattpocock/skills/blob/5b15a47f2d7150f545fbcacbfe381787fc0230dc/skills/engineering/prototype/SKILL.md)
+- `skills/engineering/prototype/LOGIC.md` at [`mattpocock/skills@5b15a47f2d7150f545fbcacbfe381787fc0230dc`](https://github.com/mattpocock/skills/blob/5b15a47f2d7150f545fbcacbfe381787fc0230dc/skills/engineering/prototype/LOGIC.md)
+- `skills/engineering/prototype/UI.md` at [`mattpocock/skills@5b15a47f2d7150f545fbcacbfe381787fc0230dc`](https://github.com/mattpocock/skills/blob/5b15a47f2d7150f545fbcacbfe381787fc0230dc/skills/engineering/prototype/UI.md)
 
-Local modification: the alias and its interview process are combined into one self-contained `grill-me` skill. The wording was adapted for agents that do not expose a separate Skill tool.
+Local modifications:
+
+- The `grilling` alias and its interview process are combined into one self-contained `grill-me` skill. The wording was adapted for agents that do not expose a separate Skill tool.
+- `research` reports in chat by default, writes durable notes only when warranted, and returns evidence to optional OpenSpec exploration without editing OpenSpec artifacts.
+- `prototype` keeps Matt Pocock's logic and UI branches but moves their detail into `references/`, shortens the instructions, and requires explicit authority before commits, pushes, issue updates, merges, or cleanup.
 
 MIT License
 
