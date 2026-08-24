@@ -74,7 +74,7 @@ Give each agent the contract, exact ownership, forbidden work, dependencies, exp
 - Parallelize only independent work and stay within the approved WIP limit.
 - Use worktrees only when the delivery plan calls for them.
 - Use installed domain skills when they materially improve the assigned work.
-- For behavior changes, capture the expected failing check and the passing check after the smallest implementation. When no practical automated seam exists, use the narrowest executable proof and state the limit.
+- For production behavior changes with a practical public seam, use `tdd` at the seam accepted in the contract or brief. Capture the actual failing check and the passing check after the smallest implementation. When no practical automated seam exists, use the narrowest executable proof and state the limit.
 
 The orchestrator judges results against the contract, repository evidence, and tests. It stays out of routine implementation. It may make a tiny integration fix when reassignment costs more, but it must disclose and verify the change.
 

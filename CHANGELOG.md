@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Added Matt Pocock's adapted `tdd` skill for red and green vertical slices at agreed public seams, with routing, orchestration, planning, prototype, and review integration.
 - Added Matt Pocock's adapted `research` skill to feed primary-source evidence into planning and optional OpenSpec exploration.
 - Added Matt Pocock's adapted `prototype` skill for disposable logic, state, and UI experiments before committing to a production design.
 - Added Matt Pocock's adapted `code-review` skill for separate repository-standards and governing-contract review at an exact head.

@@ -99,6 +99,12 @@ def main() -> int:
         errors.append("THIRD_PARTY_NOTICES.md is missing the Matt Pocock prototype UI source")
     if "skills/engineering/code-review/SKILL.md" not in notices:
         errors.append("THIRD_PARTY_NOTICES.md is missing the Matt Pocock code-review source")
+    if "skills/engineering/tdd/SKILL.md" not in notices:
+        errors.append("THIRD_PARTY_NOTICES.md is missing the Matt Pocock TDD source")
+    if "skills/engineering/tdd/tests.md" not in notices:
+        errors.append("THIRD_PARTY_NOTICES.md is missing the Matt Pocock TDD tests source")
+    if "skills/engineering/tdd/mocking.md" not in notices:
+        errors.append("THIRD_PARTY_NOTICES.md is missing the Matt Pocock TDD mocking source")
 
     markdown_files = sorted(ROOT.glob("*.md"))
     if SKILLS_DIR.exists():

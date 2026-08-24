@@ -28,7 +28,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## Matt Pocock `grill-me`, `grilling`, `research`, `prototype`, and `code-review`
+## Matt Pocock `grill-me`, `grilling`, `research`, `prototype`, `tdd`, and `code-review`
 
 Sources:
 
@@ -38,6 +38,9 @@ Sources:
 - `skills/engineering/prototype/SKILL.md` at [`mattpocock/skills@5b15a47f2d7150f545fbcacbfe381787fc0230dc`](https://github.com/mattpocock/skills/blob/5b15a47f2d7150f545fbcacbfe381787fc0230dc/skills/engineering/prototype/SKILL.md)
 - `skills/engineering/prototype/LOGIC.md` at [`mattpocock/skills@5b15a47f2d7150f545fbcacbfe381787fc0230dc`](https://github.com/mattpocock/skills/blob/5b15a47f2d7150f545fbcacbfe381787fc0230dc/skills/engineering/prototype/LOGIC.md)
 - `skills/engineering/prototype/UI.md` at [`mattpocock/skills@5b15a47f2d7150f545fbcacbfe381787fc0230dc`](https://github.com/mattpocock/skills/blob/5b15a47f2d7150f545fbcacbfe381787fc0230dc/skills/engineering/prototype/UI.md)
+- `skills/engineering/tdd/SKILL.md` at [`mattpocock/skills@5b15a47f2d7150f545fbcacbfe381787fc0230dc`](https://github.com/mattpocock/skills/blob/5b15a47f2d7150f545fbcacbfe381787fc0230dc/skills/engineering/tdd/SKILL.md)
+- `skills/engineering/tdd/tests.md` at [`mattpocock/skills@5b15a47f2d7150f545fbcacbfe381787fc0230dc`](https://github.com/mattpocock/skills/blob/5b15a47f2d7150f545fbcacbfe381787fc0230dc/skills/engineering/tdd/tests.md)
+- `skills/engineering/tdd/mocking.md` at [`mattpocock/skills@5b15a47f2d7150f545fbcacbfe381787fc0230dc`](https://github.com/mattpocock/skills/blob/5b15a47f2d7150f545fbcacbfe381787fc0230dc/skills/engineering/tdd/mocking.md)
 - `skills/engineering/code-review/SKILL.md` at [`mattpocock/skills@5b15a47f2d7150f545fbcacbfe381787fc0230dc`](https://github.com/mattpocock/skills/blob/5b15a47f2d7150f545fbcacbfe381787fc0230dc/skills/engineering/code-review/SKILL.md)
 
 Local modifications:
@@ -45,6 +48,7 @@ Local modifications:
 - The `grilling` alias and its interview process are combined into one self-contained `grill-me` skill. The wording was adapted for agents that do not expose a separate Skill tool.
 - `research` reports in chat by default, writes durable notes only when warranted, and returns evidence to optional OpenSpec exploration without editing OpenSpec artifacts.
 - `prototype` keeps Matt Pocock's logic and UI branches but moves their detail into `references/`, shortens the instructions, allows native-runtime logic demos, and requires explicit authority before commits, pushes, issue updates, merges, or cleanup.
+- `tdd` keeps Matt Pocock's public-seam, vertical-slice, test-quality, and boundary-mocking rules. It treats seams accepted by an approved plan or implementation brief as confirmed, adds explicit exclusions, records red and green proof, and keeps detailed examples in `references/`.
 - `code-review` keeps the separate standards and behavior axes, removes the dependency on Matt Pocock's issue-tracker setup, and adds exact-head and authority boundaries for DST delivery.
 
 MIT License

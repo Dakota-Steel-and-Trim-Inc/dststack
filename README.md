@@ -20,6 +20,7 @@ This toolbox will grow, but slowly. A skill belongs here after real project work
 - Keep each PR focused on one behavioral concern when the work can be separated safely.
 - Limit active work. More agents do not help when they compete for the same files or decisions.
 - Find facts in the code and running system. Ask people for product choices and consequential authority.
+- Build production behavior in test-first vertical slices when a practical public seam exists.
 - Verify the real behavior before claiming completion. Green CI supports a verdict, but does not replace one.
 - Once a delivery plan is approved, own it until it is complete or developer intervention is genuinely required.
 - Preserve production data, credentials, unrelated changes, and user-owned branches.
@@ -41,7 +42,7 @@ Next: <the immediate action or approval point>
 
 | Route | Use it when | What happens |
 |---|---|---|
-| Quick change | The behavior is clear, local, and safe for one agent to finish. | The agent makes the focused change, runs the smallest useful check, and reports the result. |
+| Quick change | The behavior is clear, local, and safe for one agent to finish. | The agent makes the focused change, uses `tdd` for production behavior when it fits, and reports the result. |
 | Plan first | Requirements remain unsettled or the work changes a durable contract, shared interface, authorization rule, schema, migration, or another repository. | The agent researches unknown facts or prototypes a question that needs executable evidence, then clarifies the contract. It uses OpenSpec only when installed and useful. |
 | Orchestrated delivery | The work needs several PRs, workspace decisions, coordinated review, or continued execution after approval. | `orchestrate` proposes the complete delivery contract and waits for one approval. |
 | Standing program | The work spans sessions or coordinated tracks and needs recovery state. | `orchestrate` hands the approved delivery to `orchestrate-program`. |
@@ -73,7 +74,7 @@ The cycle then works like this:
 5. The developer reviews and approves the behavior contract.
 6. `orchestrate` proposes the PR boundaries, branch or worktree choice, checks, merge authority, concurrency, and intervention points.
 7. The developer approves that delivery proposal once.
-8. The agent implements the pilot, verifies it, uses `code-review` for an independent exact-head verdict, fixes valid findings, and merges when the approved authority and checks allow it.
+8. The agent implements production behavior with `tdd` at the accepted public seams, records the red and green proof, then uses `code-review` for an independent exact-head verdict. It fixes valid findings and merges when the approved authority and checks allow it.
 9. The agent continues through the remaining PRs without routine approval prompts. It stops only for a product decision, missing authority, unsafe state, a required manual action, or an external blocker.
 10. The agent verifies the integrated result. If OpenSpec governed the work, it syncs and archives the completed change according to repository policy.
 
@@ -91,7 +92,7 @@ Why: This is one local copy change with a clear expected result and an existing 
 Next: Update the label, run the focused test, and report the result.
 ```
 
-The agent continues immediately. It does not create an OpenSpec change, orchestration proposal, worktree, or PR series.
+The agent continues immediately. It does not create an OpenSpec change, orchestration proposal, worktree, or PR series. It updates the existing test but does not start a TDD loop because the requested behavior did not change.
 
 ## Install globally
 
@@ -159,6 +160,7 @@ For Cursor only, replace the agent list with `--agent cursor`. In a new reposito
 | [`route-work`](skills/route-work/SKILL.md) | A new software change request needs the lightest safe route. It explains the choice briefly, keeps small work direct, and selects planning or orchestration only when warranted. |
 | [`research`](skills/research/SKILL.md) | A plan depends on an unknown fact that primary sources can settle. It returns evidence to OpenSpec or another planning flow without taking over the decision. |
 | [`prototype`](skills/prototype/SKILL.md) | Reading cannot settle a logic, state, or UI question. It builds disposable evidence and returns the verdict to planning without treating the prototype as production code. |
+| [`tdd`](skills/tdd/SKILL.md) | A feature or bug fix has a practical public test seam. It builds one observable behavior at a time with red and green proof. |
 | [`code-review`](skills/code-review/SKILL.md) | A branch or PR needs an independent verdict against repository standards and the governing behavior contract at a committed head. |
 | [`orchestrate`](skills/orchestrate/SKILL.md) | A complex change needs a delivery proposal, bounded ownership, coordinated PRs, or continued execution after approval. Skip it for a small local edit. |
 | [`orchestrate-program`](skills/orchestrate-program/SKILL.md) | An approved program will span sessions, several coordinated PRs, or enough parallel work to require durable state and recovery. The parent orchestrator normally selects it. |
@@ -179,7 +181,7 @@ python3 scripts/validate.py
 
 ## Third-party work
 
-`unslop` comes from Lauren Tan's pstack. `grill-me`, `research`, `prototype`, and `code-review` adapt Matt Pocock's skills for the DST flow. Both projects use the MIT License. Exact source commits, modifications, copyright notices, and license text are recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+`unslop` comes from Lauren Tan's pstack. `grill-me`, `research`, `prototype`, `tdd`, and `code-review` adapt Matt Pocock's skills for the DST flow. Both projects use the MIT License. Exact source commits, modifications, copyright notices, and license text are recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## License
 
