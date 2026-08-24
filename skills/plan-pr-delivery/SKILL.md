@@ -17,7 +17,7 @@ Classify delivery as `No PR`, `Single PR`, or `PR series`.
 
 - Use the smallest number of cohesive, independently reviewable PRs. Judge size by behavior, risk, dependencies, and review burden rather than a fixed line or file limit.
 - Split independent behaviors, repository boundaries, schema or data phases, cutovers, and cleanup when each slice can land safely.
-- Keep tests and documentation with the behavior they cover.
+- Keep tests and documentation with the behavior they cover. When `tdd` applies, name the public seam and expected red and green proof in the PR checks. Do not create an upfront test-only PR for behavior implemented later.
 - Leave the target branch valid and tested after every PR. Keep incomplete behavior additive, compatible, disabled, or gated.
 - Prefer independently mergeable sequential PRs. Parallelize only independent scopes. Use stacked PRs only when a safe independent sequence is impractical.
 - Allow one larger atomic PR when splitting raises risk. State why and require stronger checks.

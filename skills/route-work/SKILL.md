@@ -15,6 +15,8 @@ Do not add a delivery workflow to an answer, review, explanation, or diagnosis u
 
 ## Choose a route
 
+Routing chooses the delivery process, not the implementation method. For a feature or bug fix with a practical public test seam, use `tdd` and work in red then green vertical slices. Skip it for copy-only, documentation, generated, configuration-only, and disposable prototype work. When no useful automated seam exists, use the narrowest executable proof and state the limit.
+
 ### Quick change
 
 Choose this when the behavior is clear, localized, and safe for one agent to finish directly. It should not introduce a shared contract, schema or authorization change, migration, production action, cross-repository dependency, or several independently reviewable concerns.

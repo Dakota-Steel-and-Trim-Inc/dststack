@@ -34,7 +34,7 @@ Use pilot evidence to correct the remaining scope, PR size, briefs, and verifica
 - Prefer fewer, broader workers when splitting would create coordination work without independent value.
 - Refill capacity only after a unit reaches a terminal state or frees its lane.
 - Queue completion reports while writing a brief, changing a branch base, merging, or updating program state. Process them together after that action ends.
-- Include the approved contract, paths allowed and forbidden, acceptance criteria, exact checks, time limit, branch, worktree, dependencies, and report shape in every brief.
+- Include the approved contract, paths allowed and forbidden, acceptance criteria, exact checks, time limit, branch, worktree, dependencies, and report shape in every brief. For production behavior changes, name the accepted public test seam and required red and green evidence when `tdd` applies.
 - Do not resume an agent with stale instructions. Send a consolidated current brief.
 
 ## Verify and land continuously

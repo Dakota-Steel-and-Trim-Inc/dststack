@@ -24,6 +24,7 @@ The standards reviewer checks:
 - Violations of repository instructions or documented conventions.
 - Correctness, security, data safety, and compatibility defects visible in the diff.
 - Missing verification for behavior or risk introduced by the change.
+- Missing red and green evidence when the repository, governing contract, or implementation brief required `tdd`. Do not require it for work the TDD skill excludes or when no practical public seam exists.
 - Unnecessary duplication, scope, or abstraction that makes the change harder to maintain.
 
 The behavior reviewer checks:

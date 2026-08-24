@@ -26,6 +26,6 @@ If the question is ambiguous, inspect the surrounding code. Ask the developer on
 
 Report the question, how to run the prototype, the observed result, the resulting recommendation, and what remains uncertain. Return that evidence to `openspec-explore` or the governing planning flow. Do not edit OpenSpec artifacts through this skill.
 
-A prototype is not production implementation. Reusing a validated idea or isolated logic requires the normal implementation and verification workflow.
+A prototype is not production implementation. Reusing a validated idea or isolated logic requires the normal implementation and verification workflow. Use `tdd` when that production behavior has a practical public test seam.
 
 Do not commit, push, open or update an issue, merge, or delete prototype files without explicit authority. Never land throwaway prototype code on the target branch.
