@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Added `project-verification`, a safe generator and maintenance workflow for repository-owned web, API, container, CLI, mobile, and integration verification adapters.
+- Documented canonical skill ownership and duplicate-name policy for mixed global installations.
+- Routed realistic runtime proof through project-local verifiers without replacing focused TDD or making OpenSpec mandatory.
 - Added Matt Pocock's adapted `tdd` skill for red and green vertical slices at agreed public seams, with routing, orchestration, planning, prototype, and review integration.
 - Added Matt Pocock's adapted `research` skill to feed primary-source evidence into planning and optional OpenSpec exploration.
 - Added Matt Pocock's adapted `prototype` skill for disposable logic, state, and UI experiments before committing to a production design.

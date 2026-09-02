@@ -21,7 +21,7 @@ Routing chooses the delivery process, not the implementation method. For a featu
 
 Choose this when the behavior is clear, localized, and safe for one agent to finish directly. It should not introduce a shared contract, schema or authorization change, migration, production action, cross-repository dependency, or several independently reviewable concerns.
 
-Implement the smallest complete change and run the narrowest useful verification. Do not invoke OpenSpec, PR planning, or orchestration merely because those skills are installed.
+Implement the smallest complete change and run the narrowest useful verification. Use a project-local verifier when the change needs realistic runtime proof; use `project-verification` first only when that adapter is missing or stale. Do not invoke OpenSpec, PR planning, or orchestration merely because those skills are installed.
 
 ### Plan first
 
@@ -74,3 +74,4 @@ Re-evaluate only when the requested behavior, risk, authority, or delivery size 
 - Routing does not grant authority to commit, push, merge, deploy, migrate, delete, or change credentials.
 - Preserve repository-specific rules and accepted specifications.
 - Prefer direct work when additional process would produce no new decision or evidence.
+- Keep focused tests as the fast loop. Add project-local runtime proof only when the changed surface or blast radius warrants it.

@@ -1,5 +1,36 @@
 # Third-party notices
 
+## pstack project verification
+
+Sources at [`michael-denyer/pstack-claude@273d217aea3c8e0a743bcc31bd99d585e3ddf9c6`](https://github.com/michael-denyer/pstack-claude/tree/273d217aea3c8e0a743bcc31bd99d585e3ddf9c6):
+
+- `plugins/pstack/skills/create-verification-skill/SKILL.md`
+- `plugins/pstack/skills/maintain-verification-skill/SKILL.md`
+
+Local modification: the creation and maintenance workflows are combined into one portable `project-verification` skill. It discovers the repository's established project-skill location, supports browser, HTTP, container, CLI, mobile, and integration surfaces, removes Claude-specific agents and paths, keeps feature maps optional, and applies DST Stack's explicit authority, process-ownership, secret, production, evidence, and cleanup rules.
+
+MIT License
+
+Copyright (c) 2026 Lauren Tan
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
 ## pstack `unslop`
 
 Source: `pstack/skills/unslop/SKILL.md` at [`cursor/plugins@46125561306434d8a1d7745d540d8932ab0cd2a2`](https://github.com/cursor/plugins/blob/46125561306434d8a1d7745d540d8932ab0cd2a2/pstack/skills/unslop/SKILL.md)
