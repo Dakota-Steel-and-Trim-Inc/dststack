@@ -12,6 +12,18 @@ SKILLS_DIR = ROOT / "skills"
 NAME_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 LINK_PATTERN = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 FORBIDDEN_PROJECT_DIRS = (".agents", ".cursor", ".claude", ".opencode")
+PROJECT_VERIFICATION_SECTIONS = (
+    "## Set the boundary",
+    "## Write or maintain the adapter",
+    "### Launch",
+    "### Doctor",
+    "### Drive",
+    "### Evidence",
+    "### Failure handling",
+    "### Cleanup",
+    "## Enforce authority",
+    "## Prove the adapter",
+)
 
 
 def parse_frontmatter(path: Path) -> dict[str, str]:
@@ -105,6 +117,32 @@ def main() -> int:
         errors.append("THIRD_PARTY_NOTICES.md is missing the Matt Pocock TDD tests source")
     if "skills/engineering/tdd/mocking.md" not in notices:
         errors.append("THIRD_PARTY_NOTICES.md is missing the Matt Pocock TDD mocking source")
+    if "273d217aea3c8e0a743bcc31bd99d585e3ddf9c6" not in notices:
+        errors.append("THIRD_PARTY_NOTICES.md is missing the pinned pstack verification source")
+    for source in (
+        "plugins/pstack/skills/create-verification-skill/SKILL.md",
+        "plugins/pstack/skills/maintain-verification-skill/SKILL.md",
+    ):
+        if source not in notices:
+            errors.append(f"THIRD_PARTY_NOTICES.md is missing {source}")
+
+    verification_file = SKILLS_DIR / "project-verification" / "SKILL.md"
+    if verification_file.is_file():
+        verification_text = verification_file.read_text(encoding="utf-8")
+        for section in PROJECT_VERIFICATION_SECTIONS:
+            if section not in verification_text:
+                errors.append(f"{verification_file.relative_to(ROOT)} is missing {section}")
+        for required_term in ("Playwright", "HTTP", "container", "CLI", "mobile"):
+            if required_term not in verification_text:
+                errors.append(
+                    f"{verification_file.relative_to(ROOT)} is missing surface {required_term}"
+                )
+        skill_root = verification_file.parent.resolve()
+        for target in local_markdown_links(verification_file):
+            if target != skill_root and skill_root not in target.parents:
+                errors.append(
+                    f"{verification_file.relative_to(ROOT)} links outside its skill directory to {target}"
+                )
 
     markdown_files = sorted(ROOT.glob("*.md"))
     if SKILLS_DIR.exists():

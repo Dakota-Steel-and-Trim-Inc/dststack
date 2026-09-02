@@ -25,6 +25,7 @@ This toolbox will grow, but slowly. A skill belongs here after real project work
 - Once a delivery plan is approved, own it until it is complete or developer intervention is genuinely required.
 - Preserve production data, credentials, unrelated changes, and user-owned branches.
 - Keep shared project repositories clean. DST Stack is installed globally, not copied into each project.
+- Keep shared workflow names unique. Project-specific verification adapters stay with their repositories.
 
 ## The DST flow
 
@@ -168,6 +169,20 @@ For Cursor only, replace the agent list with `--agent cursor`. In a new reposito
 | [`challenge`](skills/challenge/SKILL.md) | Scope, concurrency, review findings, or missing proof suggest that continuing would be hard to review or unsafe. |
 | [`unslop`](skills/unslop/SKILL.md) | Any prose needs to sound like a person wrote it. This includes plans, README files, PR descriptions, and user-facing copy. |
 | [`grill-me`](skills/grill-me/SKILL.md) | A plan or design feels plausible but still has unresolved decisions. Invoke it explicitly and work through the questions before implementation. |
+| [`project-verification`](skills/project-verification/SKILL.md) | A repository needs a safe, current `verify-<project>` adapter for realistic web, API, container, CLI, mobile, or integration proof. It inspects and reuses the project's own harness. |
+
+## Skill ownership
+
+DST Stack owns every shared workflow name in the catalog above. A global installation must expose at most one implementation of each name.
+
+| Names | Canonical owner | Installation rule |
+|---|---|---|
+| `route-work`, `research`, `prototype`, `tdd`, `code-review`, `orchestrate`, `orchestrate-program`, `plan-pr-delivery`, `challenge`, `unslop`, `grill-me`, `project-verification` | DST Stack | Remove or disable only proven conflicting registrations. The known Matt Pocock overlaps are `code-review`, `grill-me`, `prototype`, `research`, and `tdd`. |
+| Non-overlapping third-party workflow skills | Their recorded upstream | Retain selectively when provenance is clear and the name does not collide with DST Stack. |
+| Official provider skills, including Supabase and Convex | Their official provider | Preserve independently of DST Stack. |
+| `verify-<project>` | The project repository | Keep project-local and do not reuse a global DST Stack skill name. |
+
+Do not resolve collisions by overwriting blindly. Do not install complete third-party collections when they reintroduce a DST-owned name.
 
 ## Adding a skill
 
@@ -181,7 +196,7 @@ python3 scripts/validate.py
 
 ## Third-party work
 
-`unslop` comes from Lauren Tan's pstack. `grill-me`, `research`, `prototype`, `tdd`, and `code-review` adapt Matt Pocock's skills for the DST flow. Both projects use the MIT License. Exact source commits, modifications, copyright notices, and license text are recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+`unslop` and `project-verification` adapt work by Lauren Tan from pstack. `grill-me`, `research`, `prototype`, `tdd`, and `code-review` adapt Matt Pocock's skills for the DST flow. Both projects use the MIT License. Exact source commits, modifications, copyright notices, and license text are recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## License
 
