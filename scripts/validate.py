@@ -24,6 +24,13 @@ PROJECT_VERIFICATION_SECTIONS = (
     "## Enforce authority",
     "## Prove the adapter",
 )
+PROJECT_VERIFICATION_DISCOVERY = (
+    ".agents/skills/verify-<project>/SKILL.md",
+    ".claude/skills/verify-<project> -> ../../.agents/skills/verify-<project>",
+    ".cursor/skills/verify-<project> -> ../../.agents/skills/verify-<project>",
+    "Codex, Claude Code, and Cursor",
+    "relative directory symlinks",
+)
 
 
 def parse_frontmatter(path: Path) -> dict[str, str]:
@@ -136,6 +143,12 @@ def main() -> int:
             if required_term not in verification_text:
                 errors.append(
                     f"{verification_file.relative_to(ROOT)} is missing surface {required_term}"
+                )
+        for discovery_rule in PROJECT_VERIFICATION_DISCOVERY:
+            if discovery_rule not in verification_text:
+                errors.append(
+                    f"{verification_file.relative_to(ROOT)} is missing discovery rule "
+                    f"{discovery_rule}"
                 )
         skill_root = verification_file.parent.resolve()
         for target in local_markdown_links(verification_file):

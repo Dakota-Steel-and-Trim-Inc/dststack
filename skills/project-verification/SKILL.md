@@ -13,7 +13,15 @@ Use it when realistic runtime proof is warranted by the change or delivery contr
 
 Read the nearest `AGENTS.md`, repository documentation, package and task scripts, test configuration, container files, existing verification instructions, and current git and runtime state. Search for an existing `verify-<project>` skill or canonical runbook before creating one. Maintain or extend the existing authority instead of duplicating it.
 
-Derive the project name from its canonical repository name. Follow the repository's established project-skill location. If no location is established, propose one that each supported agent can discover without copying the shared DST Stack skills into the repository. Ask only when choosing the location would create a new repository convention.
+Derive the project name from its canonical repository name. Reuse the repository's established canonical location and synchronization mechanism only when it gives Codex, Claude Code, and Cursor the same implementation. Otherwise use this tracked fallback:
+
+```text
+.agents/skills/verify-<project>/SKILL.md                 # canonical source; Codex reads this
+.claude/skills/verify-<project> -> ../../.agents/skills/verify-<project>
+.cursor/skills/verify-<project> -> ../../.agents/skills/verify-<project>
+```
+
+Create relative directory symlinks so worktrees and clones remain portable. Before writing, inspect all three paths and resolve every existing link. If any path contains a different implementation, points outside the repository, or is user-owned uncommitted state, stop and report the collision. Never overwrite or merge competing copies blindly. Track the one canonical source and both discovery links together.
 
 Identify from evidence:
 
