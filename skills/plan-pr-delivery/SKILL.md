@@ -43,6 +43,10 @@ Review each PR before landing with someone who did not implement its scope. The 
 
 List the actions and exact targets needed for the full lifecycle. Identify product, manual, and external-service intervention points that approval cannot cover. Treat approved authority as one lifecycle permission, not a sequence of per-PR gates. The calling orchestrator owns continuation and approval.
 
+Record the requested stopping point and version policy once. Distinguish implemented, reviewed, merged, synchronized, deployed, and live behavior verified. Require evidence for each requested stage; mark unrequested stages out of scope. A merge does not prove deployment, and a healthy service does not prove the changed behavior.
+
+For work across repositories or environments, record each host, repository location and remote, base branch, and deployment target when applicable in the existing PR plan. Name compatibility and promotion order per target. Do not apply one repository's branch or release policy to another. Omit environment fields for work that does not need them.
+
 ## Return the plan
 
 ```markdown
@@ -53,7 +57,9 @@ Delivery: <No PR | Single PR | PR series>
 Workspace: <strategy, base, and reason>
 WIP: <active lane limit and serialized scopes>
 Pilot: <pilot PR, or why none is needed>
-Authority needed: <actions and exact targets for the full lifecycle>
+Authority: <already authorized actions and exact targets; any missing authority>
+Stop when: <requested lifecycle stage and evidence>
+Version policy: <accepted bump, no bump, or repository rule; omit when irrelevant>
 Intervention points: <decisions or actions that still require the developer>
 
 | PR | Scope | Owner | Depends on | Done when |

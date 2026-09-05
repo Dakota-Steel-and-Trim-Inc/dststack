@@ -45,7 +45,7 @@ Next: <the immediate action or approval point>
 |---|---|---|
 | Quick change | The behavior is clear, local, and safe for one agent to finish. | The agent makes the focused change, uses `tdd` for production behavior when it fits, and reports the result. |
 | Plan first | Requirements remain unsettled or the work changes a durable contract, shared interface, authorization rule, schema, migration, or another repository. | The agent researches unknown facts or prototypes a question that needs executable evidence, then clarifies the contract. It uses OpenSpec only when installed and useful. |
-| Orchestrated delivery | The work needs several PRs, workspace decisions, coordinated review, or continued execution after approval. | `orchestrate` proposes the complete delivery contract and waits for one approval. |
+| Orchestrated delivery | The work needs several PRs, workspace decisions, coordinated review, or continued execution after approval. | `orchestrate` reuses an established contract and authority, or proposes the missing decisions before dependent work. |
 | Standing program | The work spans sessions or coordinated tracks and needs recovery state. | `orchestrate` hands the approved delivery to `orchestrate-program`. |
 
 The full flow earns its cost when a mistake could change permissions, corrupt persistent data, break a shared contract, affect several repositories, or hide inside an oversized PR. Skip it for copy changes, one local bug with a clear cause, a focused test adjustment, or another change one agent can finish and verify directly.
@@ -73,10 +73,10 @@ The cycle then works like this:
 3. If reading cannot settle whether a state model or UI direction works, `prototype` builds the smallest disposable demo that can answer that question. Its verdict returns to planning, while the throwaway code stays out of production.
 4. If the repository uses OpenSpec and it will help, `openspec-explore` uses that evidence to settle open decisions and `openspec-propose` writes the contract. Without OpenSpec, the agent uses `grill-me` or a concise plan. Work never stops because OpenSpec is absent. If an approved contract already exists, skip this step.
 5. The developer reviews and approves the behavior contract.
-6. `orchestrate` proposes the PR boundaries, branch or worktree choice, checks, merge authority, concurrency, and intervention points.
-7. The developer approves that delivery proposal once.
+6. `orchestrate` checks the PR boundaries, branch or worktree choice, checks, merge authority, concurrency, and intervention points against the accepted request. It proposes only what remains undecided.
+7. The developer approves missing delivery decisions once. An explicit request that already establishes the contract, actions, targets, and stopping point can supply that authority without another proposal turn.
 8. The agent implements production behavior with `tdd` at the accepted public seams, records the red and green proof, then uses `code-review` for an independent exact-head verdict. It fixes valid findings and merges when the approved authority and checks allow it.
-9. The agent continues through the remaining PRs without routine approval prompts. It stops only for a product decision, missing authority, unsafe state, a required manual action, or an external blocker.
+9. The agent uses `pr-review-follow-up` for GitHub findings, checks, authorized fixes, merge proof, synchronization, and cleanup. It continues without routine approval prompts and stops only for a product decision, missing authority, unsafe state, a required manual action, or an external blocker.
 10. The agent verifies the integrated result. If OpenSpec governed the work, it syncs and archives the completed change according to repository policy.
 
 ### Quick-change example
@@ -131,6 +131,20 @@ To update DST Stack, rerun the installation command you used. The installer refr
 
 The installer supports Cursor, Codex, Claude Code, OpenCode, and many other agents through the same Agent Skills format.
 
+### Compare an installation before updating
+
+From this checkout, run the read-only comparison against the shared global installation:
+
+```bash
+python3 scripts/compare_installation.py
+```
+
+The command compares every file in each DST skill directory with this checkout, including references and scripts. It also compares the recorded source in `~/.agents/.skill-lock.json` with DST Stack. It reports missing, changed, and extra files without printing their contents or installing anything. Preserve and inspect local differences before updating.
+
+Use `--installed-dir <skills-directory>` for another installation and `--lock-file <path>` when its source record is elsewhere. Run it on each machine with a DST Stack checkout; the command does not connect to remote hosts. Use `--json` for structured results and `--source-dir <skills-directory>` to choose another baseline.
+
+Exit code `0` means all compared content and recorded sources match. `1` means content drift, missing skills, different sources, or unknown provenance. `2` means an input or filesystem error prevented a complete comparison. A missing source record remains unknown even when file content matches. The comparison ignores `.git`, `.DS_Store`, and Python bytecode caches. It follows a skill directory's root symlink but reports nested symlinks as unsupported rather than silently omitting them. It does not audit unrelated skill names or prove discovery by a running agent.
+
 ### Optional OpenSpec companion
 
 DST Stack does not require OpenSpec. Install it only if you want durable change proposals and specifications in repositories that benefit from them.
@@ -163,6 +177,7 @@ For Cursor only, replace the agent list with `--agent cursor`. In a new reposito
 | [`prototype`](skills/prototype/SKILL.md) | Reading cannot settle a logic, state, or UI question. It builds disposable evidence and returns the verdict to planning without treating the prototype as production code. |
 | [`tdd`](skills/tdd/SKILL.md) | A feature or bug fix has a practical public test seam. It builds one observable behavior at a time with red and green proof. |
 | [`code-review`](skills/code-review/SKILL.md) | A branch or PR needs an independent verdict against repository standards and the governing behavior contract at a committed head. |
+| [`pr-review-follow-up`](skills/pr-review-follow-up/SKILL.md) | An open GitHub PR needs review monitoring, finding validation, authorized fixes, merge proof, synchronization, or cleanup. It preserves the requested stopping point. |
 | [`orchestrate`](skills/orchestrate/SKILL.md) | A complex change needs a delivery proposal, bounded ownership, coordinated PRs, or continued execution after approval. Skip it for a small local edit. |
 | [`orchestrate-program`](skills/orchestrate-program/SKILL.md) | An approved program will span sessions, several coordinated PRs, or enough parallel work to require durable state and recovery. The parent orchestrator normally selects it. |
 | [`plan-pr-delivery`](skills/plan-pr-delivery/SKILL.md) | A change needs clear PR boundaries, branch and worktree choices, dependency order, or a landing plan. |
@@ -177,7 +192,7 @@ DST Stack owns every shared workflow name in the catalog above. A global install
 
 | Names | Canonical owner | Installation rule |
 |---|---|---|
-| `route-work`, `research`, `prototype`, `tdd`, `code-review`, `orchestrate`, `orchestrate-program`, `plan-pr-delivery`, `challenge`, `unslop`, `grill-me`, `project-verification` | DST Stack | Remove or disable only proven conflicting registrations. The known Matt Pocock overlaps are `code-review`, `grill-me`, `prototype`, `research`, and `tdd`. |
+| `route-work`, `research`, `prototype`, `tdd`, `code-review`, `pr-review-follow-up`, `orchestrate`, `orchestrate-program`, `plan-pr-delivery`, `challenge`, `unslop`, `grill-me`, `project-verification` | DST Stack | Remove or disable only proven conflicting registrations. The known Matt Pocock overlaps are `code-review`, `grill-me`, `prototype`, `research`, and `tdd`. |
 | Non-overlapping third-party workflow skills | Their recorded upstream | Retain selectively when provenance is clear and the name does not collide with DST Stack. |
 | Official provider skills, including Supabase and Convex | Their official provider | Preserve independently of DST Stack. |
 | `verify-<project>` | The project repository | Keep project-local and do not reuse a global DST Stack skill name. |
@@ -192,11 +207,14 @@ Run the repository checks before opening a PR:
 
 ```bash
 python3 scripts/validate.py
+python3 -m unittest discover -s scripts -p 'test_*.py'
 ```
 
 ## Third-party work
 
 `unslop` and `project-verification` adapt work by Lauren Tan from pstack. `grill-me`, `research`, `prototype`, `tdd`, and `code-review` adapt Matt Pocock's skills for the DST flow. Both projects use the MIT License. Exact source commits, modifications, copyright notices, and license text are recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+The [upstream review](THIRD_PARTY_NOTICES.md#upstream-review-on-2026-09-05) records the revisions checked on September 5, 2026, separately from the source pins used for imports.
 
 ## License
 

@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Reused explicit delivery authority in `orchestrate`, kept inline work direct, and separated a fresh review verdict from rerunning unchanged checks.
+- Added host, repository, lifecycle completion, and version-policy context to delivery plans and program recovery.
+- Added the existing DST `pr-review-follow-up` workflow and routed GitHub closeout through it.
+- Added a read-only installation comparison for skill files and recorded provenance, with focused CLI tests in CI.
+- Recorded the September 5 upstream review separately from unchanged third-party import pins and licenses.
 - Added `project-verification`, a safe generator and maintenance workflow for repository-owned web, API, container, CLI, mobile, and integration verification adapters.
 - Documented canonical skill ownership and duplicate-name policy for mixed global installations.
 - Routed realistic runtime proof through project-local verifiers without replacing focused TDD or making OpenSpec mandatory.

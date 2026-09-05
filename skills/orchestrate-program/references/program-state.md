@@ -8,22 +8,26 @@ Use a task-specific durable directory outside tracked project content. Print its
 
 Record the approved goal, completion condition, governing request and plans, exact authority, forbidden actions, workspace plan, PR order, WIP limit, pilot decision, checks, and intervention points.
 
+Record the requested lifecycle stopping point and version policy when applicable. For each execution location, include the host, repository remote and absolute path, program directory, source task identifier when available, and actual artifact locations. Record accepted authority with its source decision. Keep credentials out of this state.
+
 ### `units.tsv`
 
 One row per implementation, review, integration, or recovery unit:
 
 ```text
-id	track	scope	owner	branch	worktree	pr	head_sha	status	depends_on
+id	track	scope	owner	host	task_id	repository	branch	worktree	pr	head_sha	status	depends_on
 ```
 
 Use `planned`, `active`, `ready-for-review`, `blocked`, `landed`, `abandoned`, or `superseded` as status values.
+
+Use a stable machine name or runtime host identifier and leave `task_id` empty when the runtime exposes none. Resolve relative labels such as `local` against the original execution machine before a cross-host handoff. `head_sha` is the last directly verified head, not an assumed remote value. Add missing columns when resuming older state, preserving existing rows and marking unknown values for verification. A `landed` unit proves merging only; requested deployment and live verification need their own units and evidence.
 
 ### `verification.tsv`
 
 One row per verdict:
 
 ```text
-repository	pr	head_sha	reviewer	level	evidence	verdict	residual_risk
+repository	host	pr	head_sha	reviewer	level	evidence	verdict	residual_risk
 ```
 
 Use `focused-check`, `runtime`, or `integrated` as verification levels. Use `pass`, `pass-with-notes`, `fail`, or `blocked` as verdicts. A changed head needs a new row.

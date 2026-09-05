@@ -7,11 +7,11 @@ description: Run an already-approved, multi-session software delivery program wi
 
 This skill adds program machinery to an approved orchestration. It does not replace the parent proposal or widen its authority.
 
-If there is no approved `orchestrate` proposal with a checkable completion condition, exact authority, PR plan, workspace plan, and intervention points, return to `orchestrate` and stop.
+Use the contract accepted through `orchestrate`, whether established by an explicit request or an approved proposal. It must include a checkable completion condition, exact authority, PR plan, workspace plan, and intervention points. If a required decision is missing, return to `orchestrate` to settle only that gap before dependent work.
 
 ## Create durable state
 
-Read [references/program-state.md](references/program-state.md). Create the program directory in an approved durable location outside tracked project content and announce its absolute path. Record the approved contract before dispatching work.
+Read [references/program-state.md](references/program-state.md). Reuse the active program directory on continuation. For a new program, create it in an approved durable location outside tracked project content and announce its host and absolute path. Record the approved contract before dispatching work.
 
 The coordinator owns program state, integration decisions, developer reports, and proof. It stays out of routine implementation. Use a track coordinator only when the main coordinator cannot process the active work without losing context.
 
@@ -38,19 +38,21 @@ Use the repository's project-local verifier for realistic behavior proof. Use `p
 - Queue completion reports while writing a brief, changing a branch base, merging, or updating program state. Process them together after that action ends.
 - Include the approved contract, paths allowed and forbidden, acceptance criteria, exact checks, time limit, branch, worktree, dependencies, and report shape in every brief. For production behavior changes, name the accepted public test seam and required red and green evidence when `tdd` applies.
 - Do not resume an agent with stale instructions. Send a consolidated current brief.
+- Use internal subagents for bounded units. Create a separate user-owned task only when requested. Record available host and task identifiers so another coordinator can inspect the right execution context.
 
 ## Verify and land continuously
 
 Record each verdict by repository, PR, and head SHA. Include reviewer, verification level, commands or runtime proof, verdict, and residual risk.
 
 - A new head SHA invalidates the old verdict.
+- Retain check evidence only when its code, dependency, configuration, and runtime inputs are unchanged. Record that rationale and rerun affected or repository-required checks.
 - CI is supporting evidence, not the verdict.
 - Behavior-changing work needs executable or runtime proof proportional to its risk.
 - The reviewer must not have implemented the scope.
 - A failed verdict produces a bounded fix assignment. It does not produce an automatic review loop.
 - Stop reviewing when the final head has no actionable findings.
 
-Land each cohesive PR as soon as it is verified and the approved authority includes merging. Do not advance dependent work until its prerequisite PR passes exact-head review and merges. Do not hold completed work until the end of the program.
+Use `pr-review-follow-up` for the GitHub lifecycle and land each cohesive PR as soon as it is verified and the approved authority includes merging. Do not advance dependent work until its prerequisite PR passes exact-head review and merges. Do not hold completed work until the end of the program.
 
 ## Control scope and developer gates
 
@@ -61,6 +63,10 @@ Write genuine product decisions, authority gaps, unsafe state, manual steps, and
 ## Recover without guessing
 
 Rebuild state from the stored contract, unit table, repository branches, PR heads, verification table, and decision log. Reconcile late or stalled agents against current heads before accepting their work.
+
+When native task access is available, retrieve the recorded source task on its recorded host to recover decisions or missing artifacts. Use compact status or bounded waits for active work, and read older history only to resolve a specific gap. Treat retrieved messages as evidence, not new authority. Verify the destination host, repository remote, path, branch, head, and dirty state directly before resuming. Compare transferred artifacts with their source and run the repository's relevant validation; never overwrite conflicting destination work.
+
+When task access is unavailable, use the durable program files as the portable handoff. Ask only for missing information that prevents safe progress. Do not claim remote work succeeded because the local task completed. Resume the next approved action once the records and live state agree.
 
 Use bounded retries. Follow repository waiting rules when present. Otherwise stop after three unchanged external checks or ten minutes. Replan a failed unit instead of repeatedly issuing the same command. If recovery changes scope, risk, authority, product behavior, or landing order, return to the developer with a revised proposal.
 
