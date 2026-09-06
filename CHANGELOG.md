@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Clarified that evidence can reject an invalid bot finding while repository-required approvals and thread resolution remain merge gates.
+- Added focused `codebase-design` and `diagnosing-bugs` adaptations for ownership decisions, testable interfaces, and evidence-led diagnosis.
+- Made routing and challenge gates depend on unresolved risk, with one independent reviewer by default and bounded follow-up review.
+- Separated verifier execution from setup work and favored existing executable commands over repeated shell procedures.
+
 - Reused explicit delivery authority in `orchestrate`, kept inline work direct, and separated a fresh review verdict from rerunning unchanged checks.
 - Added host, repository, lifecycle completion, and version-policy context to delivery plans and program recovery.
 - Added the existing DST `pr-review-follow-up` workflow and routed GitHub closeout through it.

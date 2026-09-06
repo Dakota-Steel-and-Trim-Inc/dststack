@@ -73,7 +73,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## Matt Pocock `grill-me`, `grilling`, `research`, `prototype`, `tdd`, and `code-review`
+## Matt Pocock engineering skills
 
 Sources:
 
@@ -88,13 +88,21 @@ Sources:
 - `skills/engineering/tdd/mocking.md` at [`mattpocock/skills@5b15a47f2d7150f545fbcacbfe381787fc0230dc`](https://github.com/mattpocock/skills/blob/5b15a47f2d7150f545fbcacbfe381787fc0230dc/skills/engineering/tdd/mocking.md)
 - `skills/engineering/code-review/SKILL.md` at [`mattpocock/skills@5b15a47f2d7150f545fbcacbfe381787fc0230dc`](https://github.com/mattpocock/skills/blob/5b15a47f2d7150f545fbcacbfe381787fc0230dc/skills/engineering/code-review/SKILL.md)
 
+Additional sources imported on 2026-09-06 at [`mattpocock/skills@3cca18b368ae95cdbdebbff572ccafa662551015`](https://github.com/mattpocock/skills/tree/3cca18b368ae95cdbdebbff572ccafa662551015):
+
+- `skills/engineering/codebase-design/SKILL.md`
+- `skills/engineering/diagnosing-bugs/SKILL.md`
+
 Local modifications:
+
+- `codebase-design` keeps small interfaces, cohesive ownership, and public-behavior testing. It adds cross-repository state ownership, preserves repository terminology, and removes mandatory glossary terms, speculative adapters, and automatic architecture artifacts.
+- `diagnosing-bugs` keeps the focused reproduction and falsifiable feedback loop. It permits source investigation before a reproduction exists, respects diagnosis-only scope, bounds retries, and removes mandatory hypothesis counts, runtime assumptions, and the human-loop script dependency.
 
 - The `grilling` alias and its interview process are combined into one self-contained `grill-me` skill. The wording was adapted for agents that do not expose a separate Skill tool.
 - `research` reports in chat by default, writes durable notes only when warranted, and returns evidence to optional OpenSpec exploration without editing OpenSpec artifacts.
 - `prototype` keeps Matt Pocock's logic and UI branches but moves their detail into `references/`, shortens the instructions, allows native-runtime logic demos, and requires explicit authority before commits, pushes, issue updates, merges, or cleanup.
 - `tdd` keeps Matt Pocock's public-seam, vertical-slice, test-quality, and boundary-mocking rules. It treats seams accepted by an approved plan or implementation brief as confirmed, adds explicit exclusions, records red and green proof, and keeps detailed examples in `references/`.
-- `code-review` keeps the separate standards and behavior axes, removes the dependency on Matt Pocock's issue-tracker setup, and adds exact-head and authority boundaries for DST delivery.
+- `code-review` keeps the separate standards and behavior axes, removes the dependency on Matt Pocock's issue-tracker setup, and adds exact-head and authority boundaries for DST delivery. One independent reviewer covers both axes by default, with additional reviewers for specific risks and bounded follow-up review when earlier evidence remains applicable.
 
 MIT License
 
