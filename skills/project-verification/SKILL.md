@@ -11,7 +11,9 @@ Use it when realistic runtime proof is warranted by the change or delivery contr
 
 ## Set the boundary
 
-Read the nearest `AGENTS.md`, repository documentation, package and task scripts, test configuration, container files, existing verification instructions, and current git and runtime state. Search for an existing `verify-<project>` skill or canonical runbook before creating one. Maintain or extend the existing authority instead of duplicating it.
+Read the nearest `AGENTS.md`, repository documentation, package and task scripts, test configuration, container files, existing verification instructions, and current git and runtime state. Search for an existing `verify-<project>` skill or canonical runbook before creating one. Maintain or extend the existing authority instead of duplicating it. Running a current verifier does not require loading this authoring skill or editing the adapter.
+
+Prefer thin instructions over repository-owned executable commands for repeated launch, readiness, drive, and cleanup mechanics. Reuse supported commands first. Add a small helper only when setup edits are authorized and repetition or fragility justifies it; avoid a general harness framework.
 
 Derive the project name from its canonical repository name. Reuse the repository's established canonical location and synchronization mechanism only when it gives Codex, Claude Code, and Cursor the same implementation. Otherwise use this tracked fallback:
 

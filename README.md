@@ -75,7 +75,7 @@ The cycle then works like this:
 5. The developer reviews and approves the behavior contract.
 6. `orchestrate` checks the PR boundaries, branch or worktree choice, checks, merge authority, concurrency, and intervention points against the accepted request. It proposes only what remains undecided.
 7. The developer approves missing delivery decisions once. An explicit request that already establishes the contract, actions, targets, and stopping point can supply that authority without another proposal turn.
-8. The agent implements production behavior with `tdd` at the accepted public seams, records the red and green proof, then uses `code-review` for an independent exact-head verdict. It fixes valid findings and merges when the approved authority and checks allow it.
+8. The agent implements production behavior with `tdd` at the accepted public seams, records the red and green proof, then uses `code-review` for an independent exact-head verdict. One independent reviewer normally examines both requirements and engineering quality. Additional reviewers address a concrete risk or repository requirement. It fixes valid findings and merges when the approved authority and checks allow it.
 9. The agent uses `pr-review-follow-up` for GitHub findings, checks, authorized fixes, merge proof, synchronization, and cleanup. It continues without routine approval prompts and stops only for a product decision, missing authority, unsafe state, a required manual action, or an external blocker.
 10. The agent verifies the integrated result. If OpenSpec governed the work, it syncs and archives the completed change according to repository policy.
 
@@ -173,6 +173,8 @@ For Cursor only, replace the agent list with `--agent cursor`. In a new reposito
 | Skill | Use it when |
 |---|---|
 | [`route-work`](skills/route-work/SKILL.md) | A new software change request needs the lightest safe route. It explains the choice briefly, keeps small work direct, and selects planning or orchestration only when warranted. |
+| [`codebase-design`](skills/codebase-design/SKILL.md) | Ownership, shared state, or module interfaces need a decision. It traces current owners and callers, preserves contracts, and avoids speculative layers. |
+| [`diagnosing-bugs`](skills/diagnosing-bugs/SKILL.md) | A defect or performance regression has an uncertain cause. It uses a focused feedback loop, distinguishes environment failures, and preserves diagnosis-only scope. |
 | [`research`](skills/research/SKILL.md) | A plan depends on an unknown fact that primary sources can settle. It returns evidence to OpenSpec or another planning flow without taking over the decision. |
 | [`prototype`](skills/prototype/SKILL.md) | Reading cannot settle a logic, state, or UI question. It builds disposable evidence and returns the verdict to planning without treating the prototype as production code. |
 | [`tdd`](skills/tdd/SKILL.md) | A feature or bug fix has a practical public test seam. It builds one observable behavior at a time with red and green proof. |
@@ -192,12 +194,20 @@ DST Stack owns every shared workflow name in the catalog above. A global install
 
 | Names | Canonical owner | Installation rule |
 |---|---|---|
-| `route-work`, `research`, `prototype`, `tdd`, `code-review`, `pr-review-follow-up`, `orchestrate`, `orchestrate-program`, `plan-pr-delivery`, `challenge`, `unslop`, `grill-me`, `project-verification` | DST Stack | Remove or disable only proven conflicting registrations. The known Matt Pocock overlaps are `code-review`, `grill-me`, `prototype`, `research`, and `tdd`. |
+| `route-work`, `codebase-design`, `diagnosing-bugs`, `research`, `prototype`, `tdd`, `code-review`, `pr-review-follow-up`, `orchestrate`, `orchestrate-program`, `plan-pr-delivery`, `challenge`, `unslop`, `grill-me`, `project-verification` | DST Stack | Remove or disable only proven conflicting registrations. The Matt Pocock overlaps include `codebase-design`, `diagnosing-bugs`, `code-review`, `grill-me`, `prototype`, `research`, and `tdd`. Back up existing implementations before replacing their registrations with DST adaptations. |
 | Non-overlapping third-party workflow skills | Their recorded upstream | Retain selectively when provenance is clear and the name does not collide with DST Stack. |
 | Official provider skills, including Supabase and Convex | Their official provider | Preserve independently of DST Stack. |
 | `verify-<project>` | The project repository | Keep project-local and do not reuse a global DST Stack skill name. |
 
 Do not resolve collisions by overwriting blindly. Do not install complete third-party collections when they reintroduce a DST-owned name.
+
+### Keep one delivery authority
+
+Use DST Stack for shared routing, implementation discipline, review, and delivery. Provider skills such as Svelte, Supabase, and Convex supply relevant platform knowledge; browser and native tools supply capabilities. They do not need to be copied into DST Stack. Match these capabilities to the machine's work instead of installing every available collection.
+
+Overlapping workflow names need deliberate selection even when the names differ. Common overlaps are Superpowers planning/TDD/review, Engineering Guardrails implementation/review, extra `test-driven-development` skills, and `source-command-opsx-*` aliases beside canonical OpenSpec skills. Avoid automatically chaining these workflows. Select or disable registrations using the agent's supported configuration, preserve provider tools and user-owned variants, and verify discovery in a new context. The DST installer does not disable unrelated plugins.
+
+`codebase-design` and `diagnosing-bugs` now belong to DST Stack. Keep upstream material and local variants recoverable before installing those names. An installation comparison may correctly report different provenance before this intentional ownership transfer. Other optional skills, such as `domain-modeling`, should reuse the repository's current documentation authority and apply only to their requested scope.
 
 ## Adding a skill
 
@@ -212,7 +222,7 @@ python3 -m unittest discover -s scripts -p 'test_*.py'
 
 ## Third-party work
 
-`unslop` and `project-verification` adapt work by Lauren Tan from pstack. `grill-me`, `research`, `prototype`, `tdd`, and `code-review` adapt Matt Pocock's skills for the DST flow. Both projects use the MIT License. Exact source commits, modifications, copyright notices, and license text are recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+`unslop` and `project-verification` adapt work by Lauren Tan from pstack. `codebase-design`, `diagnosing-bugs`, `grill-me`, `research`, `prototype`, `tdd`, and `code-review` adapt Matt Pocock's skills for the DST flow. Both projects use the MIT License. Exact source commits, modifications, copyright notices, and license text are recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 The [upstream review](THIRD_PARTY_NOTICES.md#upstream-review-on-2026-09-05) records the revisions checked on September 5, 2026, separately from the source pins used for imports.
 

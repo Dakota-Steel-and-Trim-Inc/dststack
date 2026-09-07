@@ -13,8 +13,8 @@ Run at the earliest applicable checkpoint.
 
 Before implementation, challenge the plan when:
 
-- It has at least three independent behavioral concerns.
-- It crosses repositories, production environments, persistent data, or destructive operations.
+- Independent behavioral concerns have unresolved dependencies or cannot be verified as one cohesive change.
+- Work across repositories, environments, or persistent state has unclear ownership, compatibility, authority, or recovery behavior.
 - Intended behavior lacks clear invariants, forbidden changes, or a stop condition.
 - More than three active implementation lanes compete for attention, based on current evidence.
 
@@ -45,6 +45,8 @@ Use current evidence:
 - CI, focused tests, and runtime evidence.
 - Deployment, migration, or rollback evidence when relevant.
 - The active task ledger when concurrency is part of the concern.
+
+Use `codebase-design` when the uncertainty concerns business-rule, state, or persistence ownership. Crossing a database or repository boundary with a settled contract and sufficient proof is not itself a reason to pause.
 
 Name the load-bearing safety invariant. Inspect the highest-risk path and its failure path. Prove the invariant with executable evidence when practical, or mark it unproven.
 

@@ -56,7 +56,7 @@ For a valid finding, make the smallest complete fix. Run the narrow regression f
 
 For an invalid finding, reply in English with the code or contract evidence that disproves it. Do not change correct code to placate a reviewer.
 
-Resolve a valid thread after the fix and evidence are present on the current head. Leave an invalid or disputed thread open until the reviewer accepts the explanation, withdraws the finding, or the thread becomes outdated. If the monitoring limit expires first, report the thread as unresolved.
+Resolve a valid thread after the fix and evidence are present on the current head. For an invalid finding, record the evidence and disposition; an independent reviewer should check a material dispute. Do not treat a bot's agreement as an extra merge requirement. Follow repository policy for resolving threads and required approvals: an open thread still blocks when the repository requires its resolution. If a required gate remains unmet at the monitoring limit, report it rather than repeating the argument or bypassing the gate.
 
 After a push, request another review only when the named reviewer does not run automatically and that request remains authorized. Follow a later instruction not to retag a reviewer; report any resulting conflict with a required review gate. Read every thread and check again on the new head.
 
@@ -73,8 +73,8 @@ If the result is orange or red, pause merge and deployment work until the requir
 Review is complete only when the final head shows:
 
 - required checks finished successfully
-- every actionable finding was fixed, withdrawn, made outdated, or rejected with evidence the reviewer accepted
-- no actionable thread remains open
+- every finding has a current-head disposition supported by evidence, and every actionable finding is fixed
+- no actionable thread remains open, and repository-required thread resolution and approvals are satisfied
 - focused tests pass, along with any final gate the repository requires
 - the PR still targets the intended base and contains only the intended changes
 

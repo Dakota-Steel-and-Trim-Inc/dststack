@@ -17,15 +17,17 @@ Do not add a delivery workflow to an answer, review, explanation, or diagnosis u
 
 Routing chooses the delivery process, not the implementation method. For a feature or bug fix with a practical public test seam, use `tdd` and work in red then green vertical slices. Skip it for copy-only, documentation, generated, configuration-only, and disposable prototype work. When no useful automated seam exists, use the narrowest executable proof and state the limit.
 
+For a defect with an uncertain cause, use `diagnosing-bugs` to establish the mechanism. When a change introduces or relocates shared behavior, state, or persistence, use `codebase-design` to identify the existing owner and affected callers before choosing a new boundary. Neither skill creates a separate approval gate for an already-settled contract.
+
 ### Quick change
 
-Choose this when the behavior is clear, localized, and safe for one agent to finish directly. It should not introduce a shared contract, schema or authorization change, migration, production action, cross-repository dependency, or several independently reviewable concerns.
+Choose this when the behavior is clear, localized, and safe for one agent to finish directly. An established database or API call does not by itself require planning. New shared contracts, schema or authorization decisions, migrations, production actions, or unresolved cross-repository dependencies need their relevant risk and authority checks.
 
-Implement the smallest complete change and run the narrowest useful verification. Use a project-local verifier when the change needs realistic runtime proof; use `project-verification` first only when that adapter is missing or stale. Do not invoke OpenSpec, PR planning, or orchestration merely because those skills are installed.
+Implement the smallest complete change and run the narrowest useful verification. Use the existing project-local verifier or canonical runbook when the change needs realistic runtime proof. Use `project-verification` to create or repair one only when setup changes are in scope; otherwise use safe existing commands and report any missing proof. Do not invoke OpenSpec, PR planning, or orchestration merely because those skills are installed.
 
 ### Plan first
 
-Choose this when requirements are unclear, behavior needs a durable contract, or the change affects shared interfaces, authorization, persistent data, migrations, or more than one repository.
+Choose this when requirements or consequential ownership decisions remain unsettled, or when changed interfaces, authorization, persistence, migrations, or cross-repository compatibility need a durable contract. Reuse a settled contract instead of replanning merely because these areas are involved.
 
 If the request already includes an approved contract, do not reopen planning. Implement one bounded change directly or pass multi-PR delivery to `orchestrate`.
 

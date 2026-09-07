@@ -15,7 +15,7 @@ Read the nearest repository instructions and relevant standards. Identify the go
 
 ## Review independently
 
-The caller is the review coordinator. When delegation is available, it uses two fresh-context reviewers that did not implement the scope. Run them in parallel only when the environment and task allow it. Give each reviewer the repository, base and head SHAs, merge base, diff command, applicable standards, governing contract, and its assigned axis. Axis reviewers must not invoke `code-review` or delegate another review.
+The caller is the review coordinator. Default to one fresh-context reviewer who did not implement the scope and examines both axes below. Add a separate reviewer when a specific risk needs distinct expertise or repository policy requires it. Reviewer count alone is not evidence. Give each reviewer the repository, base and head SHAs, merge base, diff command, applicable standards, governing contract, and its assigned question. Delegated reviewers must not invoke `code-review` or delegate another review.
 
 Without delegation, the coordinator may review both axes directly only when it did not implement any reviewed change. Otherwise obtain an independent reviewer or stop before landing.
 
@@ -39,6 +39,8 @@ Skip formatting or mechanical issues already enforced by tooling. Do not report 
 ## Verify and report
 
 The main reviewer confirms each finding against the exact diff and surrounding implementation. Keep the two axes separate so one cannot hide failure in the other.
+
+For a bounded follow-up fix, inspect the delta and every affected invariant. A new head needs a fresh verdict, but unchanged review and test evidence can be retained when its assumptions, code, dependencies, configuration, and inputs still apply. Record the earlier reviewed head and why the retained evidence remains valid. Expand to the full diff when the fix changes the contract, ownership, shared assumptions, or risk.
 
 After both axes finish, resolve the current PR head or branch ref again. Discard the verdict if it differs from the reviewed SHA. Before landing, compare the recorded reviewed SHA with that mutable ref once more.
 
