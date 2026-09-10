@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Removed `project-verification`; verification now uses existing project tests and documentation without prescribing a generated adapter.
+
 - Clarified that evidence can reject an invalid bot finding while repository-required approvals and thread resolution remain merge gates.
 - Added focused `codebase-design` and `diagnosing-bugs` adaptations for ownership decisions, testable interfaces, and evidence-led diagnosis.
 - Made routing and challenge gates depend on unresolved risk, with one independent reviewer by default and bounded follow-up review.

@@ -90,7 +90,7 @@ Review every PR before landing with a fresh-context agent that did not implement
 
 Use `pr-review-follow-up` for GitHub review monitoring, finding decisions, authorized fixes and replies, merge proof, synchronization, and cleanup. It does not replace the independent `code-review` verdict. Give each review assignment a scope and deadline. At the deadline, collect its findings and unresolved questions; investigate a specific gap instead of restarting the same broad review. Stop when the final head has no actionable findings and all required proof is present.
 
-When the delivery contract requires realistic runtime proof, use the repository's project-local verifier after focused checks. If it is absent or contradicted by current source, use safe existing commands or a canonical runbook. Use `project-verification` to create or maintain the adapter only when setup edits are within scope. Report a missing required proof as a blocker rather than expanding the task into harness development.
+When the delivery contract requires runtime proof, use existing tests, supported commands, and project documentation. Report missing required evidence without expanding the task into verification infrastructure work.
 
 Land each cohesive PR through `pr-review-follow-up` as soon as it is independently verified and the approved authority includes merging. Do not advance dependent work until every prerequisite PR passes exact-head review and merges. Park discoveries that do not block the current contract as follow-up work instead of expanding the active PR.
 
