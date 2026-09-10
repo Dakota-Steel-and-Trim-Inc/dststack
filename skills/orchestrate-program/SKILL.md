@@ -27,7 +27,7 @@ For novel, expensive, or high-risk unit shapes, take one representative unit thr
 
 Use pilot evidence to correct the remaining scope, PR size, briefs, and verification method before broad delegation. Skip a dedicated pilot for familiar, cheap, uniform work and record the reason.
 
-Use the repository's project-local verifier for realistic behavior proof. Use `project-verification` to create or maintain that adapter only when the approved unit includes the tracked setup change; do not turn every unit into a harness rewrite.
+Use existing tests and project documentation to verify each approved unit. Add verification setup only when necessary for the unit and within its authorized scope.
 
 ## Run a rolling queue
 

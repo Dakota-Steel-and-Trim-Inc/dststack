@@ -186,7 +186,6 @@ For Cursor only, replace the agent list with `--agent cursor`. In a new reposito
 | [`challenge`](skills/challenge/SKILL.md) | Scope, concurrency, review findings, or missing proof suggest that continuing would be hard to review or unsafe. |
 | [`unslop`](skills/unslop/SKILL.md) | Any prose needs to sound like a person wrote it. This includes plans, README files, PR descriptions, and user-facing copy. |
 | [`grill-me`](skills/grill-me/SKILL.md) | A plan or design feels plausible but still has unresolved decisions. Invoke it explicitly and work through the questions before implementation. |
-| [`project-verification`](skills/project-verification/SKILL.md) | A repository needs a safe, current `verify-<project>` adapter for realistic web, API, container, CLI, mobile, or integration proof. It inspects and reuses the project's own harness. |
 
 ## Skill ownership
 
@@ -194,7 +193,7 @@ DST Stack owns every shared workflow name in the catalog above. A global install
 
 | Names | Canonical owner | Installation rule |
 |---|---|---|
-| `route-work`, `codebase-design`, `diagnosing-bugs`, `research`, `prototype`, `tdd`, `code-review`, `pr-review-follow-up`, `orchestrate`, `orchestrate-program`, `plan-pr-delivery`, `challenge`, `unslop`, `grill-me`, `project-verification` | DST Stack | Remove or disable only proven conflicting registrations. The Matt Pocock overlaps include `codebase-design`, `diagnosing-bugs`, `code-review`, `grill-me`, `prototype`, `research`, and `tdd`. Back up existing implementations before replacing their registrations with DST adaptations. |
+| `route-work`, `codebase-design`, `diagnosing-bugs`, `research`, `prototype`, `tdd`, `code-review`, `pr-review-follow-up`, `orchestrate`, `orchestrate-program`, `plan-pr-delivery`, `challenge`, `unslop`, `grill-me` | DST Stack | Remove or disable only proven conflicting registrations. The Matt Pocock overlaps include `codebase-design`, `diagnosing-bugs`, `code-review`, `grill-me`, `prototype`, `research`, and `tdd`. Back up existing implementations before replacing their registrations with DST adaptations. |
 | Non-overlapping third-party workflow skills | Their recorded upstream | Retain selectively when provenance is clear and the name does not collide with DST Stack. |
 | Official provider skills, including Supabase and Convex | Their official provider | Preserve independently of DST Stack. |
 | `verify-<project>` | The project repository | Keep project-local and do not reuse a global DST Stack skill name. |
@@ -222,7 +221,7 @@ python3 -m unittest discover -s scripts -p 'test_*.py'
 
 ## Third-party work
 
-`unslop` and `project-verification` adapt work by Lauren Tan from pstack. `codebase-design`, `diagnosing-bugs`, `grill-me`, `research`, `prototype`, `tdd`, and `code-review` adapt Matt Pocock's skills for the DST flow. Both projects use the MIT License. Exact source commits, modifications, copyright notices, and license text are recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+`unslop` adapts work by Lauren Tan from pstack. `codebase-design`, `diagnosing-bugs`, `grill-me`, `research`, `prototype`, `tdd`, and `code-review` adapt Matt Pocock's skills for the DST flow. Both projects use the MIT License. Exact source commits, modifications, copyright notices, and license text are recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 The [upstream review](THIRD_PARTY_NOTICES.md#upstream-review-on-2026-09-05) records the revisions checked on September 5, 2026, separately from the source pins used for imports.
 

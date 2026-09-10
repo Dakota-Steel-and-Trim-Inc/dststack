@@ -23,7 +23,7 @@ For a defect with an uncertain cause, use `diagnosing-bugs` to establish the mec
 
 Choose this when the behavior is clear, localized, and safe for one agent to finish directly. An established database or API call does not by itself require planning. New shared contracts, schema or authorization decisions, migrations, production actions, or unresolved cross-repository dependencies need their relevant risk and authority checks.
 
-Implement the smallest complete change and run the narrowest useful verification. Use the existing project-local verifier or canonical runbook when the change needs realistic runtime proof. Use `project-verification` to create or repair one only when setup changes are in scope; otherwise use safe existing commands and report any missing proof. Do not invoke OpenSpec, PR planning, or orchestration merely because those skills are installed.
+Implement the smallest complete change and run the narrowest useful verification. Use existing tests and project documentation when runtime proof is needed. Add missing checks only when necessary for the requested outcome, and report any unverified behavior. Do not invoke OpenSpec, PR planning, or orchestration merely because those skills are installed.
 
 ### Plan first
 
