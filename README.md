@@ -184,6 +184,8 @@ For Cursor only, replace the agent list with `--agent cursor`. In a new reposito
 | [`orchestrate-program`](skills/orchestrate-program/SKILL.md) | An approved program will span sessions, several coordinated PRs, or enough parallel work to require durable state and recovery. The parent orchestrator normally selects it. |
 | [`plan-pr-delivery`](skills/plan-pr-delivery/SKILL.md) | A change needs clear PR boundaries, branch and worktree choices, dependency order, or a landing plan. |
 | [`challenge`](skills/challenge/SKILL.md) | Scope, concurrency, review findings, or missing proof suggest that continuing would be hard to review or unsafe. |
+| [`blast-radius`](skills/blast-radius/SKILL.md) | A change looks risky, or a small diff is hard to trust. It finds breakage beyond the diff and proves the one fact the change's safety depends on by running real code. |
+| [`benchmark-checklist`](skills/benchmark-checklist/SKILL.md) | You measured a speedup, regression, or other performance number. It checks the limiter, tuning, errors, repeatability, and relevance before you report or act on it. |
 | [`unslop`](skills/unslop/SKILL.md) | Any prose needs to sound like a person wrote it. This includes plans, README files, PR descriptions, and user-facing copy. |
 | [`grill-me`](skills/grill-me/SKILL.md) | A plan or design feels plausible but still has unresolved decisions. Invoke it explicitly and work through the questions before implementation. |
 
@@ -193,7 +195,7 @@ DST Stack owns every shared workflow name in the catalog above. A global install
 
 | Names | Canonical owner | Installation rule |
 |---|---|---|
-| `route-work`, `codebase-design`, `diagnosing-bugs`, `research`, `prototype`, `tdd`, `code-review`, `pr-review-follow-up`, `orchestrate`, `orchestrate-program`, `plan-pr-delivery`, `challenge`, `unslop`, `grill-me` | DST Stack | Remove or disable only proven conflicting registrations. The Matt Pocock overlaps include `codebase-design`, `diagnosing-bugs`, `code-review`, `grill-me`, `prototype`, `research`, and `tdd`. Back up existing implementations before replacing their registrations with DST adaptations. |
+| `route-work`, `codebase-design`, `diagnosing-bugs`, `research`, `prototype`, `tdd`, `code-review`, `pr-review-follow-up`, `orchestrate`, `orchestrate-program`, `plan-pr-delivery`, `challenge`, `blast-radius`, `benchmark-checklist`, `unslop`, `grill-me` | DST Stack | Remove or disable only proven conflicting registrations. The Matt Pocock overlaps include `codebase-design`, `diagnosing-bugs`, `code-review`, `grill-me`, `prototype`, `research`, and `tdd`. Back up existing implementations before replacing their registrations with DST adaptations. |
 | Non-overlapping third-party workflow skills | Their recorded upstream | Retain selectively when provenance is clear and the name does not collide with DST Stack. |
 | Official provider skills, including Supabase and Convex | Their official provider | Preserve independently of DST Stack. |
 | `verify-<project>` | The project repository | Keep project-local and do not reuse a global DST Stack skill name. |

@@ -114,6 +114,12 @@ def main() -> int:
         if source not in notices:
             errors.append(f"THIRD_PARTY_NOTICES.md is missing {source}")
 
+    if "df581122cde17e6e27686b5a448bde23e4ad4318" not in notices:
+        errors.append("THIRD_PARTY_NOTICES.md is missing the pinned pstack blast-radius and benchmark-checklist source")
+    for source in ("pstack/skills/blast-radius/SKILL.md", "pstack/skills/benchmark-checklist/SKILL.md"):
+        if source not in notices:
+            errors.append(f"THIRD_PARTY_NOTICES.md is missing {source}")
+
     markdown_files = sorted(ROOT.glob("*.md"))
     if SKILLS_DIR.exists():
         markdown_files.extend(sorted(SKILLS_DIR.glob("**/*.md")))
