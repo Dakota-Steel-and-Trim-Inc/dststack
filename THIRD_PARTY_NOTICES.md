@@ -80,7 +80,7 @@ Sources at [`cursor/plugins@df581122cde17e6e27686b5a448bde23e4ad4318`](https://g
 - `pstack/skills/blast-radius/SKILL.md`
 - `pstack/skills/benchmark-checklist/SKILL.md`
 
-Local modifications: removed `disable-model-invocation`, replaced references to pstack's `how`, `why`, `arena`, `principle-explain-the-number`, and playbooks with self-contained wording, and dropped `benchmark-checklist`'s section mapping it to pstack's perf playbooks.
+Local modifications: removed `disable-model-invocation`, replaced references to pstack's `how`, `why`, `arena`, `principle-explain-the-number`, and playbooks with self-contained wording, generalized "Solid versus React" to the framework's render and effect order, and dropped `benchmark-checklist`'s section mapping it to pstack's perf playbooks.
 
 MIT License
 
