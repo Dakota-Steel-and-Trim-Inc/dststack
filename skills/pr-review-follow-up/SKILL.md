@@ -21,6 +21,8 @@ Confirm the repository, PR number, head branch and SHA, intended base, worktree,
 
 Use `gh pr view`, `gh pr checks`, and GitHub GraphQL `reviewThreads` when available. A PR summary, email, or bot overview cannot prove that the review is clean.
 
+When `link_pull_request` is available, register every PR this thread opens or works on, including each layer of a stack.
+
 ## Respect the permission boundary
 
 Monitoring is read-only. "Handle this review" permits scoped fixes, pushes, review replies, and thread resolution when the evidence supports it.
@@ -39,7 +41,9 @@ Trust current-head checks, reviews, and thread state over stale bot summary text
 
 Trigger only the reviewer named by the user or required by the repository. Use `@coderabbitai review` only when the user requests it or the repository names it as the approved command.
 
-Poll while a review or check is pending. Stop after three unchanged checks or ten minutes unless the user asked for ongoing monitoring. Once every actionable finding is settled, do not manufacture another review round.
+Poll while a review or check is pending. Stop after three unchanged checks or ten minutes unless the user explicitly asked for ongoing monitoring.
+
+For that ongoing monitoring, use `watch_pull_request` when it is available instead of a polling loop, and end the turn. T3 Code wakes the thread when checks finish, someone else comments, or the branch conflicts. Re-read the PR on each wake, re-arm after a push you act on, and call `unwatch_pull_request` once review is done or the wait is no longer authorized. A wake does not grant merge authority. Once every actionable finding is settled, do not manufacture another review round.
 
 When several independent PRs need work, use one writer per PR or repository if delegation is available and useful. Keep coupled changes with one writer. The lead agent still checks the final threads, checks, merge evidence, refs, and preserved user state.
 

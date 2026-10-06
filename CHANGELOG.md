@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Added pstack's `blast-radius` and `benchmark-checklist`, adapted to stand alone without pstack's other skills and playbooks.
+- Added T3 Code mechanics to `orchestrate` and `pr-review-follow-up`: `delegate_task` dispatch, `t3_thread_launch` worktrees, PR linking, and `watch_pull_request` instead of polling. Other agents keep the existing behavior.
 - Removed `project-verification`; verification now uses existing project tests and documentation without prescribing a generated adapter.
 
 - Clarified that evidence can reject an invalid bot finding while repository-required approvals and thread resolution remain merge gates.
