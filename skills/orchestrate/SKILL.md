@@ -76,6 +76,8 @@ For a standing program, read and follow `orchestrate-program`. For other modes, 
 
 Give each agent the contract, exact ownership, forbidden work, dependencies, expected result, verification, ledger path, and assigned PR, branch, and worktree. For work across machines, include the host, repository location, and target environment. Use internal subagents for bounded assignments. Create a separate user-owned task only when the developer requests one.
 
+In T3 Code, pick providers and models from `orchestrator_capabilities`, then dispatch bounded assignments with `delegate_task`. The child sees only its brief, so make the brief self-contained. Keep each `taskId` and end the turn instead of polling; completion wakes the thread. When the approved plan gives an assignment its own branch or worktree, start it with `t3_thread_launch` and an explicit `workspaceStrategy`. Running `git worktree add` inside a prompt does not rebind the thread. Register every PR with `link_pull_request`.
+
 - Keep one writer per scope, branch, and worktree.
 - Parallelize only independent work and stay within the approved WIP limit.
 - Use worktrees only when the delivery plan calls for them.
